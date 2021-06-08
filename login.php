@@ -88,13 +88,13 @@ if (!isset($_SESSION['access_token'])) {
                 <div class="card border-0 shadow-lg my-5">
                     <div class="card-body p-4">
                         
-                            <img class="img-fluid" src="img/ku-logo1.png" alt="" >
-                        
+                            <!-- <img class="img-fluid" src="img/ku-logo1.png" alt="" > -->
+                            <img class="img-responsive rounded mb-4" src="img/ku-logo1.png" alt="">
                         
 
 
-                        <div class="h4 text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
-                        <p class="h6 text-gray-600 mb-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.ku.th เท่านั้น</p>
+                        <div class="fs-2  text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
+                        <p class="h6 text-muted mb-4 pt-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.ku.th เท่านั้น</p>
 
                         <?php
                         if ($login_button == '') {

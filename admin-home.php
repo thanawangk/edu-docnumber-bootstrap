@@ -53,7 +53,7 @@ session_start();
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <!-- <img src="img/ku-sublogo.png" class="img-fluid" alt="" width="80" height="80"> -->
+                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
                     <span class="text-success">KU SRC</span>
                 </a>
 
@@ -160,7 +160,7 @@ session_start();
 
 
                                     echo "  <td>
-                                                <p class='text-danger'>ยกเลิกแล้ว</p>
+                                                <p class='text-danger'>ยกเลิก</p>
                                             </td>";
 
                                     echo "  <td>
