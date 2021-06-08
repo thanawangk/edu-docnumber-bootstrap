@@ -15,16 +15,16 @@ if($_SESSION["AD_userid"]=="" || $_SESSION["AD_name"]=="" || $_SESSION["AD_email
         if($db->query($cancelsql)==TRUE){
             echo "<script>";
             echo "alert('ยกเลิกข้อมูลเอกสารแล้ว');"; 
-            echo "window.location.href = 'home.php';";
+            echo "window.location.href = 'admin-home.php';";
             echo "</script>"; 
         }else{
             echo "<script>";
             echo "alert('ไม่สามารถลบได้ เกิดข้อผิดพลาด');"; 
-            echo "window.location.href = 'home.php';";
+            echo "window.location.href = 'admin-home.php';";
             echo "</script>";  
         }
     }else{
-        header("location: home.php");
+        header("location: admin-home.php");
     }
 
 } ?>

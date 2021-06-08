@@ -54,12 +54,12 @@ if (!isset($_SESSION['access_token'])) {
 
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
-
+    <link rel="stylesheet" href="css/ss.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            height: 768px;
+            /* height: 768px; */
             background: linear-gradient(to right,
                     rgba(252, 108, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
@@ -87,7 +87,10 @@ if (!isset($_SESSION['access_token'])) {
                 <!-- ส่วนของ Card -->
                 <div class="card border-0 shadow-lg my-5">
                     <div class="card-body p-4">
-                        <img class="img-fluid" src="img/ku-sublogo.png" alt="" width="200" height="50">
+                        
+                            <img class="img-fluid" src="img/ku-logo1.png" alt="" >
+                        
+                        
 
 
                         <div class="h4 text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
@@ -95,7 +98,7 @@ if (!isset($_SESSION['access_token'])) {
 
                         <?php
                         if ($login_button == '') {
-                            header('location:home.php');
+                            header('location:ckuser.php');
                         } else {
                             echo '<div align="center">' . $login_button . '</div>';
                         }
@@ -112,7 +115,7 @@ if (!isset($_SESSION['access_token'])) {
     </div>
     <!-- end Container    -->
 
-    <p class="mt-5 mb-3 text-muted">&copy; 2021–2077</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021–20XX</p>
 
 
 

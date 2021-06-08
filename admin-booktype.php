@@ -15,8 +15,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก</title>
+    <title>ประเภทหนังสือ</title>
 
+    <link rel="stylesheet" href="css/ss.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -78,20 +79,6 @@ session_start();
 
         <div class="container col-lg-8 bg-light p-3">
 
-            <!-- Sidebar แบบสำรอง -->
-            <!-- <div class="col-sm-3 col-md-3"> -->
-            <!-- <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        <span class="fs-4">หน้าแรก</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">กรอกเอกสาร</a>
-                        <a href="#" class="list-group-item list-group-item-action">กรอกย้อนหลัง</a>
-                        <a href="#" class="list-group-item list-group-item-action">ประเภทหนังสือ</a>
-                        <a href="#" class="list-group-item list-group-item-action">จัดการสมาชิก</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">บ่มี</a>
-                    </div> -->
-            <!-- </div> -->
-
             <!-- ล่างหัวบน -->
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
@@ -104,11 +91,11 @@ session_start();
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="home.php" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="form-document.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="reform-document.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
-                        <li><a href="booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="manage-user.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="admin-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
+                        <li><a href="admin-reform-doc.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
+                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
                     </ul>
                 </div>
             </header>
@@ -123,59 +110,38 @@ session_start();
                     <table class="table table-bordered table-striped mydatatable">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-                                <th>นามสกุล</th>
-                                <th>อีเมล</th>
-                                <th>เบอร์โทรศัพท์</th>
-                                <th>สถานะ</th>
+                                <th>เลขปัจจุบัน</th>
+                                <th>ปีปัจจุบัน</th>
                                 <th></th>
                             </tr>
                         </thead>
 
                         <tbody>
 
-                            <tr>
-                                <td>
+                            <?php
+                            $selectbook = "select * from type ";
+                            $reql = $db->query($selectbook);
+                            while ($rowuser = $reql->fetch_assoc()) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $rowuser["TypeNumber"]; ?></td>
+                                    <td><?php echo $rowuser["Name"]; ?></td>
+                                    <td><?php echo $rowuser["current_number"]; ?></td>
+                                    <td><?php echo $rowuser["current_year"]; ?></td>
 
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <!-- ปุ่ม -->
-                                <td>
-
-                                </td>
-                            </tr>
-
+                                    <td class="edit_booktype"> <a href="Edittype.php?typeid=<?php echo $rowuser["TypeID"]; ?>">edit</a></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
 
                         <tfoot>
                             <tr>
-                                <th>ID</th>
+                                <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-                                <th>นามสกุล</th>
-                                <th>อีเมล</th>
-                                <th>เบอร์โทรศัพท์</th>
-                                <th>สถานะ</th>
+                                <th>เลขปัจจุบัน</th>
+                                <th>ปีปัจจุบัน</th>
                                 <th></th>
                             </tr>
                         </tfoot>
@@ -209,5 +175,17 @@ session_start();
 
 
 </body>
+
+<footer id="footerAddD">
+    <div class="footer1_20xx">
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2021–20XX</p>
+    </div>
+    <div class="footer1_C">
+        <h3>Contact Us</h3>
+        <li><i class="fas fa-phone-alt"></i> (+66) 123455</li>
+    </div>
+
+</footer>
 
 </html>

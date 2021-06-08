@@ -1,41 +1,11 @@
 <?php
 require("dbConn.php");
 session_start();
-date_default_timezone_set("Asia/Bangkok");
 
-$docid = $_GET["docid"];
-$userid = $_SESSION['AD_userid'];
-
-if (!$_SESSION['login']) {
-    header("location: /myqnumber/login.php");
-    exit;
-}
-
-$namearr = array('');
-$selectuser = "select Name from type";
-$reql = $db->query($selectuser);
-
-while ($row = mysqli_fetch_array($reql)) {
-    array_push($namearr, $row['Name']);
-}
-
-$nameadd = count($namearr);
-
-
-$docid = $_GET["docid"];
-
-$_SESSION['nameadd'] = $nameadd;
-
-$selectresult = "select resultNumber from document where DocumentID='$docid'";
-$reql = $db->query($selectresult);
-$row = mysqli_fetch_array($reql);
-$resultnum = $row['resultNumber'];
-
-$selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docid'";
-$reql = $db->query($selectnumbook);
-$row = mysqli_fetch_array($reql);
-$typenum = $row['TypeNumber'];
-
+// if (!$_SESSION['login']) {
+//     header("location: /myqnumber/login.php");
+//     exit;
+// }
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +15,7 @@ $typenum = $row['TypeNumber'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไขเอกสาร</title>
+    <title>หน้าแรก</title>
 
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
@@ -57,7 +27,7 @@ $typenum = $row['TypeNumber'];
 
     <style>
         body {
-            height: 768px;
+            /* height: 768px; */
             background: linear-gradient(to right,
                     rgba(252, 108, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
@@ -124,29 +94,64 @@ $typenum = $row['TypeNumber'];
 
             <!-- ล่างหัวบน -->
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                <h1 class="display-4 fw-normal">USER นะจ๊ะ</h1>
             </div>
 
         </div>
 
-        <!-- แถบเมนู2 -->
+        <!-- แถบเมนู -->
         <div class="container col-lg-8 alert-secondary">
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="home.php" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="form-document.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="reform-document.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
-                        <li><a href="booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="manage-user.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="admin-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
+                        <li><a href="admin-reform-doc.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
+                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
                     </ul>
                 </div>
             </header>
         </div>
 
 
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 mb-3 bg-light p-3">
 
+            <!-- ตาราง -->
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mydatatable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ชื่อ</th>
+                                <th>นามสกุล</th>
+                                <th>อีเมล</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>สถานะ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>ชื่อ</th>
+                                <th>นามสกุล</th>
+                                <th>อีเมล</th>
+                                <th>เบอร์โทรศัพท์</th>
+                                <th>สถานะ</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
 
 
         </div>
@@ -161,9 +166,16 @@ $typenum = $row['TypeNumber'];
 
 
 
-
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="/myqnumber/lib/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $('.mydatatable').DataTable();
+    </script>
+
 
 
 </body>

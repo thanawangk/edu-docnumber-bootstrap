@@ -17,6 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าแรก</title>
 
+    <link rel="stylesheet" href="css/ss.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -79,20 +80,6 @@ session_start();
 
         <div class="container col-lg-8 bg-light p-3">
 
-            <!-- Sidebar แบบสำรอง -->
-            <!-- <div class="col-sm-3 col-md-3"> -->
-            <!-- <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        <span class="fs-4">หน้าแรก</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">กรอกเอกสาร</a>
-                        <a href="#" class="list-group-item list-group-item-action">กรอกย้อนหลัง</a>
-                        <a href="#" class="list-group-item list-group-item-action">ประเภทหนังสือ</a>
-                        <a href="#" class="list-group-item list-group-item-action">จัดการสมาชิก</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">บ่มี</a>
-                    </div> -->
-            <!-- </div> -->
-
             <!-- ล่างหัวบน -->
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
@@ -106,10 +93,10 @@ session_start();
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="form-document.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="reform-document.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
-                        <li><a href="booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="manage-user.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <li><a href="admin-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
+                        <li><a href="admin-reform-doc.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
+                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
                     </ul>
                 </div>
             </header>
@@ -126,8 +113,8 @@ session_start();
                             <tr>
                                 <th>วันที่</th>
                                 <th>เลขเอกสาร</th>
-                                <th>ชื่อผู้รับ</th>
-                                <th>ชื่อผู้ส่ง</th>
+                                <th>ผู้ส่ง</th>
+                                <th>ผู้รับ</th>
                                 <th>เรื่อง</th>
                                 <th>สถานะ</th>
                                 <th></th>
@@ -155,12 +142,13 @@ session_start();
                                     echo '<td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
 
                                     echo "<td>
-                            <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
+                            <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
                             </td>";
 
                                     echo "<td>
-                            <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
+                            <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
                             </td>";
+
 
                                     echo "<td>
                             <p class='text-danger'><del>{$rowdoc["Text"]}</del>
@@ -200,12 +188,13 @@ session_start();
                                         </td>
 
                                         <td>
-                                            <?php echo $rowdoc["Receive_Name"]; ?>
+                                            <?php echo $rowdoc["Sent_Name"]; ?>
                                         </td>
 
                                         <td>
-                                            <?php echo $rowdoc["Sent_Name"]; ?>
+                                            <?php echo $rowdoc["Receive_Name"]; ?>
                                         </td>
+
 
                                         <td>
                                             <?php echo $rowdoc["Text"]; ?>
@@ -225,9 +214,9 @@ session_start();
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
-                                                    echo "<a class='btn btn-outline-secondary waves-effect edit-doc' href='edit-document.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
+                                                    echo "<a class='btn btn-outline-secondary waves-effect edit-doc' href='admin-edit-doc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-outline-danger waves-effect cancel-doc ' href='cancel-document.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-outline-danger waves-effect cancel-doc ' href='admin-cancel-doc.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
                                                 }
                                                 ?>
                                             </div>
@@ -252,10 +241,25 @@ session_start();
                 </div>
             </div>
 
-
         </div>
 
-
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -312,5 +316,18 @@ session_start();
     <script type="text/javascript" src="viewmodal.js"></script>
 
 </body>
+
+<footer id="footerAddD">
+
+    <div class="footer1_20xx">
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2021–20XX</p>
+    </div>
+    <div class="footer1_C">
+        <h3>Contact Us</h3>
+        <li><i class="fas fa-phone-alt"></i> (+66) 123455</li>
+    </div>
+
+</footer>
 
 </html>

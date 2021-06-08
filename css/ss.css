@@ -1,0 +1,47 @@
+.container li a{
+    color: rosybrown;
+    transition: .3s;
+    font-size: 25px;
+}
+
+.container li a:hover{
+    color: royalblue;
+    transform: translateY(-7px);
+}
+
+.img-fluid{
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: .3s;
+    width: 150px;
+    height: 150px;
+}
+
+#footerAddD {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 200px;
+    padding-left: 200px;
+}
+
+#footerAddD .footer1_C li{
+    cursor: pointer;
+    transition: .3s;
+    list-style: none;
+    
+
+}
+#footerAddD .footer1_C li:hover{
+    transform: translateY(-7px);
+}
+
+
+#footerAddD .footer1_C li i{
+    color: aqua;
+}
+
+.footer1_20xx p{
+    color: aqua;
+}
+
