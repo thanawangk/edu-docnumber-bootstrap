@@ -73,6 +73,7 @@
             </div>
           </form>
         </div>
+        <!-- ฟอร์มอยู่นี้ -->
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Billing address</h4>
           <form class="needs-validation" novalidate>

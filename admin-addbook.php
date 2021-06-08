@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไขเอกสาร</title>
+    <title>กรอกเอกสาร</title>
 
     <link rel="stylesheet" href="css/ss.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -25,6 +25,7 @@ session_start();
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
 
     <style>
         body {
@@ -99,7 +100,7 @@ session_start();
         <div class="container col-lg-8 mb-3 bg-light pb-3 pt-4 ps-5 pe-5">
 
             <!-- ฟอร์ม -->
-            <h3 class="mb-3">แก้ไขเอกสาร</h3>
+            <h3 class="mb-3">กรอกขอเลขเอกสาร</h3>
             <form class="needs-validation" novalidate>
                 <div class="row g-3">
 
@@ -198,6 +199,7 @@ session_start();
 
             </form>
 
+
         </div>
 
 
@@ -243,6 +245,7 @@ session_start();
 
 
 
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="/myqnumber/lib/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
@@ -255,13 +258,14 @@ session_start();
 
     <script type="text/javascript" src="viewmodal.js"></script>
 
+
 </body>
 
 
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc.  </p>
+    <p>&copy; 2017–2021 Company, Inc. </p>
 </footer>
 
 </html>

@@ -104,11 +104,10 @@ session_start();
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="admin-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="admin-reform-doc.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
-                        <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <li><a href="user-home.php" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="user-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>  
+                        <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
+                        <!-- <li><a href="user-profile.php" class="nav-link px-2 link-dark">โปรไฟล์</a></li> -->
                     </ul>
                 </div>
             </header>

@@ -45,6 +45,7 @@ session_start();
 </head>
 
 <body>
+    <!-- ส่วน Section -->
     <section class="min-vh-100">
 
         <!-- หัวบนสุด -->
@@ -78,13 +79,11 @@ session_start();
             </div>
         </header>
 
+        <!-- ล่างหัวบน -->
         <div class="container col-lg-8 bg-light p-3">
-
-            <!-- ล่างหัวบน -->
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
             </div>
-
         </div>
 
         <!-- แถบเมนู -->
@@ -93,8 +92,8 @@ session_start();
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="admin-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="admin-reform-doc.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="admin-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
+                        <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
                         <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                         <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
                     </ul>
@@ -102,7 +101,7 @@ session_start();
             </header>
         </div>
 
-
+        <!-- เนื้อหา -->
         <div class="container col-lg-8 mb-3 bg-light p-3">
 
             <!-- ตาราง -->
@@ -243,32 +242,15 @@ session_start();
 
         </div>
 
-        <div class="modal" tabindex="-1">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Modal body text goes here.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 
+        <!-- จบ Section -->
     </section>
 
 
 
-
-    <!-- Modal Zone -->
+    <!-- ส่วน Modal -->
     <div class="modal fade" id="view-detailModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -277,22 +259,22 @@ session_start();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
+                    <input type="hidden" name="id" id="id" value="" readonly>
 
                     <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
+                    <input type="text" name="num" id="num" readonly><br>
 
                     <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
+                    <input type="text" name="sentname" id="sentname" readonly><br>
 
                     <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
+                    <input type="text" name="resvname" id="resvname" readonly><br>
 
                     <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
+                    <input type="text" name="text" id="text" readonly><br>
 
                     <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
+                    <input type="text" name="status" id="status" readonly><br>
                 </div>
                 <div class="modal-footer">
 
@@ -302,7 +284,7 @@ session_start();
     </div>
 
 
-
+    <!-- สคริป -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="/myqnumber/lib/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
@@ -312,22 +294,14 @@ session_start();
     <script>
         $('.mydatatable').DataTable();
     </script>
-
     <script type="text/javascript" src="viewmodal.js"></script>
 
 </body>
 
-<footer id="footerAddD">
-
-    <div class="footer1_20xx">
-
-        <p class="mt-5 mb-3 text-muted">&copy; 2021–20XX</p>
-    </div>
-    <div class="footer1_C">
-        <h3>Contact Us</h3>
-        <li><i class="fas fa-phone-alt"></i> (+66) 123455</li>
-    </div>
-
+<!-- FOOTER -->
+<footer class="my-5 pt-4 container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2017–2021 Company, Inc.  </p>
 </footer>
 
 </html>

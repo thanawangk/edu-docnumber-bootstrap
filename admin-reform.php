@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไขเอกสาร</title>
+    <title>กรอกย้อนหลัง</title>
 
     <link rel="stylesheet" href="css/ss.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -99,7 +99,7 @@ session_start();
         <div class="container col-lg-8 mb-3 bg-light pb-3 pt-4 ps-5 pe-5">
 
             <!-- ฟอร์ม -->
-            <h3 class="mb-3">แก้ไขเอกสาร</h3>
+            <h3 class="mb-3">กรอกขอเลขย้อนหลัง</h3>
             <form class="needs-validation" novalidate>
                 <div class="row g-3">
 
