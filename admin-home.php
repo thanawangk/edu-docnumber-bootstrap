@@ -110,6 +110,7 @@ session_start();
                     <table class="table table-bordered table-striped mydatatable">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>วันที่</th>
                                 <th>เลขเอกสาร</th>
                                 <th>ผู้ส่ง</th>
@@ -128,48 +129,52 @@ session_start();
                             while ($rowdoc = $reql->fetch_assoc()) {
 
                                 if ($rowdoc["Status"] == 0) {
+
                                     echo "<tr>
-                            <td>
-                            <p class='text-danger'><del>{$rowdoc["Date"]}</del>
-                            </td>";
+                                            <td>
+                                                <p class='text-danger'><del>{$rowdoc["DocumentID"]}</del>
+                                            </td>";
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowdoc["Date"]}</del>
+                                            </td>";
 
                                     $docids = $rowdoc["DocumentID"];
                                     $selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docids'";
                                     $reql2 = $db->query($selectnumbook);
                                     $row2 = mysqli_fetch_array($reql2);
                                     $typenum = $row2['TypeNumber'];
-                                    echo '<td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
+                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
 
-                                    echo "<td>
-                            <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
-                            </td>";
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
+                                            </td>";
 
-                                    echo "<td>
-                            <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
-                            </td>";
-
-
-                                    echo "<td>
-                            <p class='text-danger'><del>{$rowdoc["Text"]}</del>
-                            </td>";
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
+                                            </td>";
 
 
-                                    echo "<td>
-                                <p class='text-danger'>ยกเลิกแล้ว</p>
-                            </td> 
-                            ";
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowdoc["Text"]}</del>
+                                            </td>";
 
-                                    echo "<td class='table_edit'>
-                            
-                                    <button type='button' href='#' class='btn-outline-info waves-effect view-detail' data-id='{$rowdoc["DocumentID"]}' data-num=\"อว.6503{$typenum}/{$rowdoc["resultNumber"]}\" 
-                            data-sentname='{$rowdoc["Sent_Name"]}' data-resvname='{$rowdoc["Receive_Name"]}' data-text='{$rowdoc["Text"]}' data-status='{$rowdoc["Status"]}'><i class=\"fas fa-search\"></i>
-                            </button>
-                        </td>
-                    </tr>";
+
+                                    echo "  <td>
+                                                <p class='text-danger'>ยกเลิกแล้ว</p>
+                                            </td>";
+
+                                    echo "  <td>
+                                                <a href='#' class='btn btn-outline-info waves-effect view-detail' data-id='{$rowdoc["Date"]}'  data-num='อว.6503$typenum/{$rowdoc["resultNumber"]} ' data-sentname=' {$rowdoc["Sent_Name"]}' data-resvname='{$rowdoc["Receive_Name"]}' data-text='{$rowdoc["Text"]}' data-status='{$rowdoc["Status"]}'><i class='fas fa-search'></i>
+                                                </a>
+                                            </td>
+                                        </tr>";
                                 } else {
-
                             ?>
                                     <tr>
+                                        <td>
+                                            <?php echo $rowdoc["DocumentID"]; ?>
+                                        </td>
+
                                         <td>
                                             <?php echo $rowdoc["Date"]; ?>
                                         </td>
@@ -194,28 +199,26 @@ session_start();
                                             <?php echo $rowdoc["Receive_Name"]; ?>
                                         </td>
 
-
                                         <td>
                                             <?php echo $rowdoc["Text"]; ?>
                                         </td>
 
                                         <td>
-                                            <?php echo "<p class='text-success'>ใช้งาน</p>";
-                                            ?>
+                                            <?php echo "<p class='text-success'>ใช้งาน</p>"; ?>
                                         </td>
 
                                         <!-- ปุ่ม -->
                                         <td>
                                             <div class="btn-group me-2" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
-                                                <a href="#" class="btn btn-outline-info waves-effect view-detail" data-id="<?php echo $rowdoc["DocumentID"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                <a href="#" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>"  data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
-                                                    echo "<a class='btn btn-outline-secondary waves-effect edit-doc' href='admin-edit-doc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
+                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-edit-doc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-outline-danger waves-effect cancel-doc ' href='admin-cancel-doc.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-danger waves-effect cancel-doc ' href='admin-cancel-doc.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
                                                 }
                                                 ?>
                                             </div>
@@ -227,6 +230,7 @@ session_start();
 
                         <tfoot>
                             <tr>
+                                <th>ID</th>
                                 <th>วันที่</th>
                                 <th>เลขเอกสาร</th>
                                 <th>ชื่อผู้รับ</th>
@@ -255,25 +259,49 @@ session_start();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
+                    <h3 class="modal-title ">รายละเอียด</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="" readonly>
+                    
+                    <div class="d-flex justify-content-center">
+                        <div class="col-7 text-center ">
+                            <label for="num">
+                                <h5>เลขเอกสาร</h5>
+                            </label>
+                            <input type="text" name="num" id="num" readonly><br>
+                        </div>
+                    </div>
 
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num" readonly><br>
+                    <div class="col-6">
+                        <label for="num">ลงวันที่</label>
+                        <input type="text" name="id" id="id" readonly><br>
+                    </div>
 
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname" readonly><br>
+                    <div class="col-lg-11">
+                        <label for="sentname">ชื่อผู้ส่ง</label>
+                        <input type="text" name="sentname" id="sentname" readonly><br>
 
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname" readonly><br>
+                        <label for="resvname">ชื่อผู้รับ</label>
+                        <input type="text" name="resvname" id="resvname" readonly><br>
+                    </div>
 
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text" readonly><br>
 
-                    <label for="status">สถานะ</label>
+                    <div class="form-outline">
+                        <label for="text">เรื่อง</label>
+                        <textarea type="text" class="form-control" name="text" id="text" rows="3" readonly></textarea>
+                    </div>
+
+                    <div class="col-md-8 pt-3">
+
+                        <label for="address2" class="form-label">ไฟล์ <span class="text-muted">(Optional)</span></label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                    </div>
+
+                    <label for="status">สถานะ </label>
                     <input type="text" name="status" id="status" readonly><br>
                 </div>
                 <div class="modal-footer">
@@ -301,7 +329,7 @@ session_start();
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc.  </p>
+    <p>&copy; 2017–2021 Company, Inc. </p>
 </footer>
 
 </html>
