@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>กรอกย้อนหลัง</title>
+    <title>แก้ไขประเภท</title>
 
     <link rel="stylesheet" href="css/ss2.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -102,7 +102,7 @@ session_start();
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                    <h3>กรอกขอย้อนหลัง</h3>
+                    <h3>แก้ไขประเภทเอกสาร</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
@@ -115,79 +115,58 @@ session_start();
 
                             </div>
 
-
-                            <div class="col-md-4">
-                                <label for="state" class="form-label">ประเภทหนังสือ</label>
-                                <select class="form-select" id="state" required>
-                                    <option value="">เลือกประเภท...</option>
-                                    <option>California</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid state.
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 ">
-                                <label for="zip" class="form-label">ลงวันที่</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-lg-12">
-                                <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
-                                    <span class="input-group-text">ถึง</span>
+                            <div class="container">
+                                <div class="col-lg-12">
+                                    <label for="zip" class="form-label">ชื่อประเภท</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="" required>
                                     <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="lastName" class="form-label">ชื่อผู้รับ</label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Your username is required.
+                                        Zip code required.
                                     </div>
                                 </div>
                             </div>
 
 
+                            <div class="container">
 
-
-
-
-
-
-                            <div class="col-lg-12">
-                                <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
-                                <div class="invalid-feedback">
-                                    Please enter your shipping address.
+                                <div class="col-lg-12">
+                                    <label for="firstName" class="form-label">เลข อว.</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Your username is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
 
+                            <div class="container">
+                                <div class="col-lg-12">
+                                    <label for="lastName" class="form-label">เลขเริ่มต้น</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Your username is required.
+                                        </div>
+                                    </div>
+                                </div>
 
-
-
-
-                        </div>
-
-
-                        <div class="col-md-6 pt-3">
-
-                            <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>
+
+
+                            <div class="container mb-3">
+                                <div class="col-lg-12">
+                                    <label for="zip" class="form-label">ปีปัจจุบัน</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+
                         <hr class="my-4">
 
 
@@ -196,7 +175,7 @@ session_start();
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" type="submit">ตกลง</button>
-                                <button class="btn btn-danger ms-2">ยกเลิก</button>
+                                <a href="admin-booktype.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -279,7 +258,7 @@ session_start();
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. </p>
+    &copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

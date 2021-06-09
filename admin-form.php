@@ -48,7 +48,7 @@ session_start();
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <!-- <img src="img/ku-sublogo.png" class="img-fluid" alt="" width="80" height="80"> -->
+                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
                     <span class="text-success">KU SRC</span>
                 </a>
 
@@ -102,12 +102,12 @@ session_start();
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                <h3>กรอกขอเลขเอกสาร</h3>
+                    <h3>กรอกขอเลขเอกสาร</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
                     <!-- ฟอร์ม -->
-                    
+
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
 
@@ -137,20 +137,20 @@ session_start();
 
 
 
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <span class="input-group-text">จาก</span>
                                     <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                    <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
-                                    <span class="input-group-text">ถึง</span>
+                                    
                                     <input type="text" class="form-control" id="lastName" placeholder="" required>
                                     <div class="invalid-feedback">
                                         Your username is required.
@@ -158,14 +158,7 @@ session_start();
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
                                 <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
                                 <div class="invalid-feedback">
@@ -180,7 +173,7 @@ session_start();
 
                         </div>
 
-                        
+
                         <div class="col-md-6 pt-3">
 
                             <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
@@ -190,26 +183,26 @@ session_start();
                             </div>
                         </div>
                         <hr class="my-4">
-                        
-                        
+
+
 
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button> 
+                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
                                 <button class="btn btn-danger ms-2">ยกเลิก</button>
 
                             </div>
                         </div>
 
-                        
+
 
                     </form>
 
 
                 </div>
                 <div class="card-footer text-muted">
-                   
+
                 </div>
             </div>
 
@@ -279,8 +272,8 @@ session_start();
 
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
-<p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
-    <>&copy; 2017–2021 Company, Inc. </>
+    <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
+    &copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

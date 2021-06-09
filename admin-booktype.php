@@ -51,7 +51,7 @@ session_start();
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <!-- <img src="img/ku-sublogo.png" class="img-fluid" alt="" width="80" height="80"> -->
+                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
                     <span class="text-success">KU SRC</span>
                 </a>
 
@@ -104,10 +104,14 @@ session_start();
 
         <div class="container col-lg-8 mb-3 bg-light p-3">
 
+            <div class="mb-3 d-flex justify-content-end">
+                <a class="btn btn-primary" href="admin-addbook.php" role="button">เพิ่มประเภท</a>
+            </div>
+
             <!-- ตาราง -->
-            <div class="col">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped mydatatable">
+            <div class="col ">
+                <div class="table-responsive ">
+                    <table class="table table-bordered table-striped mydatatable pt-3 pb-3">
                         <thead>
                             <tr>
                                 <th>เลขประเภท</th>
@@ -131,7 +135,9 @@ session_start();
                                     <td><?php echo $rowuser["current_number"]; ?></td>
                                     <td><?php echo $rowuser["current_year"]; ?></td>
 
-                                    <td class="edit_booktype"> <a class="edit" href="Edittype.php?typeid=<?php echo $rowuser["TypeID"]; ?>">edit</a></td>
+                                    <td class="edit_booktype">
+                                        <a class="btn btn-secondary waves-effect edit" href="admin-editbook.php?typeid=<?php echo $rowuser["TypeID"]; ?>"><i class="fas fa-edit"></i></a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -176,16 +182,10 @@ session_start();
 
 </body>
 
-<footer id="footerAddD">
-    <div class="footer1_20xx">
-
-        <p class="mt-5 mb-3 text-muted">&copy; 2021–20XX</p>
-    </div>
-    <div class="footer1_C">
-        <h3>Contact Us</h3>
-        <li><i class="fas fa-phone-alt"></i> (+66) 123455</li>
-    </div>
-
+<!-- FOOTER -->
+<footer class="my-5 pt-4 container">
+    <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
+    &copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

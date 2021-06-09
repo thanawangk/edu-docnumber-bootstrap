@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>กรอกย้อนหลัง</title>
+    <title>แก้ไขข้อมูลสมาชิก</title>
 
     <link rel="stylesheet" href="css/ss2.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -102,7 +102,7 @@ session_start();
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                    <h3>กรอกขอย้อนหลัง</h3>
+                    <h3>แก้ไขข้อมูลสมาชิก</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
@@ -111,62 +111,36 @@ session_start();
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
 
-                            <div class="container">
-
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <label for="state" class="form-label">ประเภทหนังสือ</label>
-                                <select class="form-select" id="state" required>
-                                    <option value="">เลือกประเภท...</option>
-                                    <option>California</option>
-                                </select>
+                        
+                            <h5 class="mb-1">ข้อมูล </h5>
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                                 <div class="invalid-feedback">
-                                    Please provide a valid state.
+                                    Valid first name is required.
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 ">
-                                <label for="zip" class="form-label">ลงวันที่</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                                 <div class="invalid-feedback">
-                                    Zip code required.
+                                    Valid last name is required.
                                 </div>
                             </div>
 
 
-
-                            <div class="col-lg-12">
-                                <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
-                                    <span class="input-group-text">ถึง</span>
-                                    <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="lastName" class="form-label">ชื่อผู้รับ</label>
-                                <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="@eng.ku.th">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-                            <div class="col-lg-12">
-                                <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
+                            <div class="col-12">
+                                <label for="address" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="address" placeholder="0123456789" required>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -175,19 +149,36 @@ session_start();
 
 
 
-
-
                         </div>
 
+                        <hr class="my-4">
 
-                        <div class="col-md-6 pt-3">
 
-                            <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>
+
+
+                        <h5 class="mb-3">สถานะ </h5>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+                        <label class="btn btn-outline-success" for="success-outlined">Admin</label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                        <label class="btn btn-outline-danger text-center " for="danger-outlined"> <span class="p-1">User</span> </label>
+
+                        <hr class="my-4">
+
+                        <h5 class="mb-3">สิทธ์ประเภท</h5>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label ps-1" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
                         </div>
+                        
+
+
+
                         <hr class="my-4">
 
 
@@ -196,7 +187,7 @@ session_start();
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" type="submit">ตกลง</button>
-                                <button class="btn btn-danger ms-2">ยกเลิก</button>
+                                <a href="admin-users.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -279,7 +270,7 @@ session_start();
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. </p>
+    &copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

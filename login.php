@@ -54,7 +54,6 @@ if (!isset($_SESSION['access_token'])) {
 
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="css/ss.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
     <style>
