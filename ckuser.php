@@ -19,7 +19,7 @@ $email = $_SESSION['user_email_address'];
             $_SESSION["USE_email"] = $row["Email"];
             $_SESSION['USE_status'] = $row["Status"];
             echo "<script>";
-            echo "alert('ยินดีต้อนรับ Member คุณ $name');"; 
+            echo "alert('ยินดีต้อนรับ Member คุณ $name');";
             echo "window.location.href = 'user-home.php';";
             echo "</script>"; 
         }else{

@@ -63,9 +63,9 @@ if (!isset($_SESSION['access_token'])) {
             background: linear-gradient(to right,
                     rgba(252, 108, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
-                    font-family: 'Sarabun', sans-serif;
+            font-family: 'Sarabun', sans-serif;
         }
-        
+
         /* body {
             background-color: #08e1ae;
             background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
@@ -87,13 +87,15 @@ if (!isset($_SESSION['access_token'])) {
                 <!-- ส่วนของ Card -->
                 <div class="card border-0 shadow-lg my-5">
                     <div class="card-body p-4">
-                        
-                            <!-- <img class="img-fluid" src="img/ku-logo1.png" alt="" > -->
-                            <img class="img-responsive rounded mb-4" src="img/ku-logo1.png" alt="">
-                        
 
 
-                        <div class="fs-2  text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
+
+                        <!-- <img class="img-fluid" src="img/ku-logo1.png" alt="" > -->
+                        <img class="img-responsive rounded mb-4" src="img/ku-logo1.png" alt="">
+
+
+
+                        <div class="fs-2 text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
                         <p class="h6 text-muted mb-4 pt-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.ku.th เท่านั้น</p>
 
                         <?php

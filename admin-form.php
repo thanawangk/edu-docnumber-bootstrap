@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>กรอกเอกสาร</title>
 
-    <link rel="stylesheet" href="css/ss.css">
+    <link rel="stylesheet" href="css/ss2.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -279,8 +279,8 @@ session_start();
 
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. </p>
+<p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
+    <>&copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

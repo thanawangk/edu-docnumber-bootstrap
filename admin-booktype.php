@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ประเภทหนังสือ</title>
 
-    <link rel="stylesheet" href="css/ss.css">
+    <link rel="stylesheet" href="css/ss2.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -131,7 +131,7 @@ session_start();
                                     <td><?php echo $rowuser["current_number"]; ?></td>
                                     <td><?php echo $rowuser["current_year"]; ?></td>
 
-                                    <td class="edit_booktype"> <a href="Edittype.php?typeid=<?php echo $rowuser["TypeID"]; ?>">edit</a></td>
+                                    <td class="edit_booktype"> <a class="edit" href="Edittype.php?typeid=<?php echo $rowuser["TypeID"]; ?>">edit</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

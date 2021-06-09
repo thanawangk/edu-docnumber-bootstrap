@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าแรก</title>
 
-    <link rel="stylesheet" href="css/ss.css">
+    <link rel="stylesheet" href="css/ss2.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -211,7 +211,7 @@ session_start();
                                         <td>
                                             <div class="btn-group me-2" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
-                                                <a href="#" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>"  data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                <a href="#" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
@@ -263,7 +263,7 @@ session_start();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
+
                     <div class="d-flex justify-content-center">
                         <div class="col-7 text-center ">
                             <label for="num">
@@ -328,7 +328,7 @@ session_start();
 
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
-    <p class="float-end"><a href="#">Back to top</a></p>
+    <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
     <p>&copy; 2017–2021 Company, Inc. </p>
 </footer>
 
