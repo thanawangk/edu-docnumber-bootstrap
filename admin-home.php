@@ -30,7 +30,7 @@ session_start();
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(252, 108, 120, 0.9),
+                    rgba(28, 252, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
             font-family: 'Sarabun', sans-serif;
         }

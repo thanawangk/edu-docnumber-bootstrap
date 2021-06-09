@@ -60,7 +60,7 @@ if (!isset($_SESSION['access_token'])) {
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(252, 108, 120, 0.9),
+                    rgba(28, 252, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
             font-family: 'Sarabun', sans-serif;
         }
@@ -90,7 +90,7 @@ if (!isset($_SESSION['access_token'])) {
 
 
                         <!-- <img class="img-fluid" src="img/ku-logo1.png" alt="" > -->
-                        <img class="img-responsive rounded mb-4" src="img/ku-logo1.png" alt="">
+                        <img class="img-responsive rounded mb-3" src="img/ku-logo1.png" alt="">
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost","root","","qnumber");
+$db = mysqli_connect("localhost","root","","myqumber");
 
 if(!$db)
 {

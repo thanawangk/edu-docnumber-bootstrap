@@ -30,7 +30,7 @@ session_start();
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(252, 108, 120, 0.9),
+                    rgba(28, 252, 120, 0.9),
                     rgba(108, 247, 252, 0.9));
             font-family: 'Sarabun', sans-serif;
         }
@@ -105,7 +105,7 @@ session_start();
         <div class="container col-lg-8 mb-3 bg-light p-3">
 
 
-           
+
 
             <div class="mb-3 d-flex justify-content-end">
                 <a class="btn btn-primary" href="admin-adduser.php" role="button">เพิ่มสมาชิก</a>
