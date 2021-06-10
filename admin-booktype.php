@@ -150,9 +150,11 @@ session_start();
                                     <td>
                                         <?php
                                         if ($rowbook["current_number"] == 0) {
-                                            echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"far fa-edit\"></i></a>&nbsp;";
+                                            echo "<div class='btn-group' role='group' aria-label='Second group'>
+                                            <a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"far fa-edit\"></i></a>
+                                            <a class='btn btn-danger waves-effect  cancel-doc ' href='delete-book-delete.php?typeid= {$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')\"><i class=\"fas fa-minus\"></i></a>
+                                            </div>";
 
-                                            echo "<a class='btn btn-danger waves-effect  cancel-doc ' href='delete-book-delete.php?typeid= {$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')\"><i class=\"fas fa-minus\"></i></a>";
                                         }
                                         else{
                                             echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"fas fa-edit\"></i></a>";
