@@ -18,11 +18,11 @@ $(document).ready(function () {
         $('#sentname').val(sentname);
         $('#resvname').val(resvname);
         $('#text').val(text);
-        if(status == 0){
-            document.getElementById('status').innerHTML="<span style='color: red;'>ยกเลิก</span>";
+        if (status == 0) {
+            document.getElementById('status').innerHTML = "<span style='color: red;'>ยกเลิก</span>";
         }
-        else{
-            document.getElementById('status').innerHTML="<span style='color: green;'>ใช้งาน</span>";
+        else {
+            document.getElementById('status').innerHTML = "<span style='color: green;'>ใช้งาน</span>";
         }
         //$('#status').val(status);
 

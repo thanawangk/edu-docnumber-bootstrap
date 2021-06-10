@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>กรอกย้อนหลัง</title>
 
-    <link rel="stylesheet" href="css/ss2.css">
+    <link rel="stylesheet" href="css/ss3.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -31,8 +31,7 @@ session_start();
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(28, 252, 120, 0.9),
-                    rgba(108, 247, 252, 0.9));
+                    #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
     </style>
@@ -63,11 +62,20 @@ session_start();
 
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>
+                                    สถานะ : <?php
+                                            if ($_SESSION['statusfor'] == 'user') {
+                                                echo "ผู้ใช้";
+                                            }
+                                            if ($_SESSION['statusfor'] == 'admin') {
+                                                echo "แอดมิน";
+                                            }
+                                            ?>
+                                </a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,9 +94,13 @@ session_start();
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
                         <li><a href="admin-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+
+                        <div class="C_nav2">
+                            <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        </div>
+
                         <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                         <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
                     </ul>

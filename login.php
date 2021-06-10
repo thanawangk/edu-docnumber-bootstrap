@@ -60,8 +60,7 @@ if (!isset($_SESSION['access_token'])) {
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(28, 252, 120, 0.9),
-                    rgba(108, 247, 252, 0.9));
+                    #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
 

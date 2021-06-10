@@ -10,10 +10,8 @@ $email = $_SESSION['user_email_address'];
     $result = $db->query($ckmember);
     $row = $result->fetch_assoc();
     
-    
 
     if(isset($row["Name"])!=""){
-
         $_SESSION['statusfor'] = $row["Status"];
         if($row["Status"]=="user"){
             $_SESSION["USE_userid"] = $row["UserID"];
@@ -40,3 +38,7 @@ $email = $_SESSION['user_email_address'];
       echo "window.history.back()";
       echo "</script>";  
     }
+
+
+
+?>

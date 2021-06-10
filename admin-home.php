@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าแรก</title>
 
-    <link rel="stylesheet" href="css/ss2.css">
+    <link rel="stylesheet" href="css/ss3.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -30,10 +30,15 @@ session_start();
         body {
             /* height: 768px; */
             background: linear-gradient(to right,
-                    rgba(28, 252, 120, 0.9),
-                    rgba(108, 247, 252, 0.9));
+                    #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
+
+
+        /* body {
+            background-color: #08e1ae;
+            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
+        } */
     </style>
 
 </head>
@@ -94,7 +99,9 @@ session_start();
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                        <div class="C_nav1">
+                            <li><a href="#" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
+                        </div>
                         <li><a href="admin-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
                         <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
                         <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
@@ -135,10 +142,10 @@ session_start();
 
                                     echo "<tr>
                                             <td>
-                                                <p class='text-danger'><del>{$rowdoc["DocumentID"]}</p></del>
+                                                <p class='text-danger'><del>{$rowdoc["DocumentID"]}</del>
                                             </td>";
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Date"]}</p></del>
+                                                <p class='text-danger'><del>{$rowdoc["Date"]}</del>
                                             </td>";
 
                                     $docids = $rowdoc["DocumentID"];
@@ -146,19 +153,19 @@ session_start();
                                     $reql2 = $db->query($selectnumbook);
                                     $row2 = mysqli_fetch_array($reql2);
                                     $typenum = $row2['TypeNumber'];
-                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></p></td>';
+                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del></p>
+                                                <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
                                             </td>";
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del></p>
+                                                <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
                                             </td>";
 
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Text"]}</del></p>
+                                                <p class='text-danger'><del>{$rowdoc["Text"]}</del>
                                             </td>";
 
 
@@ -275,12 +282,10 @@ session_start();
                     </div>
 
                     <div class="col-6">
-
                         <label for="num">
                             <h5>เลขเอกสาร</h5>
                         </label>
                         <input type="text" name="num" id="num" readonly><br>
-
                         <label for="num">ลงวันที่</label>
                         <input type="text" name="id" id="id" readonly><br>
                     </div>
@@ -307,7 +312,6 @@ session_start();
                             <label class="input-group-text" for="inputGroupFile02">Upload</label>
                         </div>
                     </div>
-
 
                 </div>
                 <div class="modal-footer">
