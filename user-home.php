@@ -50,7 +50,7 @@ session_start();
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <!-- <img src="img/ku-sublogo.png" class="img-fluid" alt="" width="80" height="80"> -->
+                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
                     <span class="text-success">KU SRC</span>
                 </a>
 
@@ -65,11 +65,20 @@ session_start();
 
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>
+                                    สถานะ : <?php
+                                            if ($_SESSION['statusfor'] == 'user') {
+                                                echo "ผู้ใช้";
+                                            }
+                                            if ($_SESSION['statusfor'] == 'admin') {
+                                                echo "แอดมิน";
+                                            }
+                                            ?>
+                                </a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +114,7 @@ session_start();
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="user-home.php" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="user-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>  
+                        <li><a href="user-form-doc.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
                         <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                         <!-- <li><a href="user-profile.php" class="nav-link px-2 link-dark">โปรไฟล์</a></li> -->
                     </ul>

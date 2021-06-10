@@ -34,12 +34,6 @@ session_start();
                     rgba(108, 247, 252, 0.9));
             font-family: 'Sarabun', sans-serif;
         }
-
-
-        /* body {
-            background-color: #08e1ae;
-            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
-        } */
     </style>
 
 </head>
@@ -68,11 +62,20 @@ session_start();
 
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>
+                                    สถานะ : <?php
+                                            if ($_SESSION['statusfor'] == 'user') {
+                                                echo "ผู้ใช้";
+                                            }
+                                            if ($_SESSION['statusfor'] == 'admin') {
+                                                echo "แอดมิน";
+                                            }
+                                            ?>
+                                </a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -132,10 +135,10 @@ session_start();
 
                                     echo "<tr>
                                             <td>
-                                                <p class='text-danger'><del>{$rowdoc["DocumentID"]}</del>
+                                                <p class='text-danger'><del>{$rowdoc["DocumentID"]}</p></del>
                                             </td>";
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Date"]}</del>
+                                                <p class='text-danger'><del>{$rowdoc["Date"]}</p></del>
                                             </td>";
 
                                     $docids = $rowdoc["DocumentID"];
@@ -143,19 +146,19 @@ session_start();
                                     $reql2 = $db->query($selectnumbook);
                                     $row2 = mysqli_fetch_array($reql2);
                                     $typenum = $row2['TypeNumber'];
-                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
+                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></p></td>';
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>
+                                                <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del></p>
                                             </td>";
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del>
+                                                <p class='text-danger'><del>{$rowdoc["Receive_Name"]}</del></p>
                                             </td>";
 
 
                                     echo "  <td>
-                                                <p class='text-danger'><del>{$rowdoc["Text"]}</del>
+                                                <p class='text-danger'><del>{$rowdoc["Text"]}</del></p>
                                             </td>";
 
 
@@ -256,7 +259,7 @@ session_start();
 
     <!-- ส่วน Modal -->
     <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title ">รายละเอียด</h3>
@@ -265,20 +268,24 @@ session_start();
                 <div class="modal-body">
 
                     <div class="d-flex justify-content-center">
-                        <div class="col-7 text-center ">
-                            <label for="num">
-                                <h5>เลขเอกสาร</h5>
-                            </label>
-                            <input type="text" name="num" id="num" readonly><br>
-                        </div>
+                        <label for="status">
+                            <h4>สถานะ :</h4>
+                        </label>
+                        &nbsp;<span class="h4" id="status"></span><br>
                     </div>
 
                     <div class="col-6">
+
+                        <label for="num">
+                            <h5>เลขเอกสาร</h5>
+                        </label>
+                        <input type="text" name="num" id="num" readonly><br>
+
                         <label for="num">ลงวันที่</label>
                         <input type="text" name="id" id="id" readonly><br>
                     </div>
 
-                    <div class="col-lg-11">
+                    <div class="col-lg-12">
                         <label for="sentname">ชื่อผู้ส่ง</label>
                         <input type="text" name="sentname" id="sentname" readonly><br>
 
@@ -301,8 +308,7 @@ session_start();
                         </div>
                     </div>
 
-                    <label for="status">สถานะ </label>
-                    <input type="text" name="status" id="status" readonly><br>
+
                 </div>
                 <div class="modal-footer">
 
@@ -322,7 +328,7 @@ session_start();
     <script>
         $('.mydatatable').DataTable();
     </script>
-    <script type="text/javascript" src="viewmodal.js"></script>
+    <script type="text/javascript" src="viewmodal1.js"></script>
 
 </body>
 
