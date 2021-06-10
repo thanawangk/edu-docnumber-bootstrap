@@ -2,9 +2,13 @@
 require("dbConn.php");
 session_start();
 
+$typeid = $_GET["typeid"];
+
 // if (!$_SESSION['login']) {
-//     header("location: /myqnumber/login.php");
+//     header("location: /qnumber/index.php");
 //     exit;
+// } else {
+//     $typeid = $_GET["typeid"];
 // }
 ?>
 
@@ -110,88 +114,67 @@ session_start();
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                    <h3>แก้ไขประเภทเอกสาร</h3>
+                    <h3>แก้ไขประเภทหนังสือ</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
-                    <!-- ฟอร์ม -->
+                    <!-- ฟอร์ม2 -->
+                    <form action="edit-book-update.php" method="POST" enctype="multipart/form-data">
+                        <?php
+                        $selectuser = "select * from type where TypeID = '" . $typeid . "'";
+                        $reql = $db->query($selectuser);
+                        $rowuser = $reql->fetch_assoc();
+                        ?>
 
-                    <form class="needs-validation" novalidate>
+                        <input type="text" name="typeid" hidden value="<?php echo $rowuser["TypeID"]; ?>">
+
                         <div class="row g-3">
-
                             <div class="container">
 
                             </div>
 
                             <div class="container">
                                 <div class="col-lg-12">
-                                    <label for="zip" class="form-label">ชื่อประเภท</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
+                                    <label for="Name">ชื่อประเภท :</label>
+                                    <input type="text" class="form-control mt-1" id="Name" name="Name" value="<?php echo $rowuser["Name"]; ?>">
                                 </div>
                             </div>
-
-
-                            <div class="container">
-
-                                <div class="col-lg-12">
-                                    <label for="firstName" class="form-label">เลข อว.</label>
-                                    <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="firstName" placeholder="" required>
-                                        <div class="invalid-feedback">
-                                            Your username is required.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <div class="container">
                                 <div class="col-lg-12">
-                                    <label for="lastName" class="form-label">เลขเริ่มต้น</label>
-                                    <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                        <div class="invalid-feedback">
-                                            Your username is required.
-                                        </div>
-                                    </div>
-                                </div>
 
+                                    <label for="TypeNumber">เลข อว :</label>
+                                    <input type="text" class="form-control mt-1" id="TypeNumber" name="TypeNumber" value="<?php echo $rowuser['TypeNumber']; ?>">
+                                </div>
                             </div>
 
+                            <div class="container">
+                                <div class="col-lg-12">
+
+                                    <label for="current_number">เลขเริ่มต้น :</label>
+                                    <input type="number " class="form-control mt-1" id="current_number" name="current_number" value="<?php echo $rowuser['current_number']; ?>">
+                                </div>
+                            </div>
 
                             <div class="container mb-3">
                                 <div class="col-lg-12">
-                                    <label for="zip" class="form-label">ปีปัจจุบัน</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
+                                    <label for="current_year">ปีปัจจุบัน :</label>
+                                    <input type="text" class="form-control mt-1" id="current_year" name="current_year" value="<?php echo $rowuser['current_year']; ?>">
+
                                 </div>
                             </div>
-
                         </div>
-
 
                         <hr class="my-4">
 
-
-
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
-
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
+                                <input type="submit" class="btn btn-success me-2" name="submit" value="ตกลง">
                                 <a href="admin-booktype.php" class="btn btn-danger ms-2">ยกเลิก</a>
-
                             </div>
                         </div>
 
-
-
                     </form>
-
 
                 </div>
                 <div class="card-footer text-muted">

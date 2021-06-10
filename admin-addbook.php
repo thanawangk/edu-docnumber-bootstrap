@@ -1,6 +1,7 @@
 <?php
-require("dbConn.php");
 session_start();
+date_default_timezone_set("Asia/Bangkok");
+$date_y = (date("Y") + 543);
 
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
@@ -115,81 +116,44 @@ session_start();
                 <div class="card-body ps-4 pe-4">
 
                     <!-- ฟอร์ม -->
-
-                    <form class="needs-validation" novalidate>
+                    <form action="add-book-insert.php" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
-
                             <div class="container">
 
                             </div>
-
-                            <div class="container">
+                            <div class="container ">
                                 <div class="col-lg-12">
-                                    <label for="zip" class="form-label">ชื่อประเภท</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
+                                    <label for="name">ชื่อประเภท :</label>
+                                    <input type="text" class="form-control mt-1" id="name" name="name" required>
                                 </div>
                             </div>
-
-
-                            <div class="container">
-
-                                <div class="col-lg-12">
-                                    <label for="firstName" class="form-label">เลข อว.</label>
-                                    <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="firstName" placeholder="" required>
-                                        <div class="invalid-feedback">
-                                            Your username is required.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
                             <div class="container">
                                 <div class="col-lg-12">
-                                    <label for="lastName" class="form-label">เลขเริ่มต้น</label>
-                                    <div class="input-group has-validation">
-                                        <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                        <div class="invalid-feedback">
-                                            Your username is required.
-                                        </div>
-                                    </div>
+                                    <label for="num">เลข อว :</label>
+                                    <input type="text" class="form-control mt-1" id="num" name="num" placeholder="เริ่มด้วย  ." required>
                                 </div>
-
                             </div>
-
-
+                            <div class="container">
+                                <div class="col-lg-12">
+                                    <label for="startnum">เลขเริ่มต้น :</label>
+                                    <input type="number" class="form-control mt-1" id="startnum" name="startnum" placeholder="0" required>
+                                </div>
+                            </div>
                             <div class="container mb-3">
                                 <div class="col-lg-12">
-                                    <label for="zip" class="form-label">ปีปัจจุบัน</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
+                                    <label for="year">ปีปัจจุบัน :</label>
+                                    <input type="text" class="form-control mt-1" id="year" name="year" placeholder="โปรดใส่ปี พ.ศ. ปัจจุบัน" required>
+                                    <!-- <input type="text" class="form-control" id="year" name="year" placeholder="โปรดใส่ปี พ.ศ. ปัจจุบัน <?php echo $date_y ?>" value="" required> -->
                                 </div>
                             </div>
-
                         </div>
-
-
                         <hr class="my-4">
-
-
-
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
-
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
+                                <input type="submit" class="btn btn-success me-2" name="submit" value="ตกลง">
                                 <a href="admin-booktype.php" class="btn btn-danger ms-2">ยกเลิก</a>
-
                             </div>
                         </div>
-
-
-
                     </form>
 
 
@@ -202,8 +166,6 @@ session_start();
 
 
         </div>
-
-
 
         <!-- จบ Section -->
     </section>

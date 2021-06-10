@@ -117,7 +117,7 @@ session_start();
         <div class="container col-lg-8 mb-3 bg-light p-3">
 
             <div class="mb-3 d-flex justify-content-end">
-                <a class="add_booktype_user" href="admin-addbook.php" role="button">เพิ่มประเภท</a>
+                <a class="add_booktype_user p-2" href="admin-addbook.php" role="button">เพิ่มประเภท</a>
             </div>
 
             <!-- ตาราง -->
@@ -139,16 +139,26 @@ session_start();
                             <?php
                             $selectbook = "select * from type ";
                             $reql = $db->query($selectbook);
-                            while ($rowuser = $reql->fetch_assoc()) {
+                            while ($rowbook = $reql->fetch_assoc()) {
                             ?>
                                 <tr>
-                                    <td><?php echo $rowuser["TypeNumber"]; ?></td>
-                                    <td><?php echo $rowuser["Name"]; ?></td>
-                                    <td><?php echo $rowuser["current_number"]; ?></td>
-                                    <td><?php echo $rowuser["current_year"]; ?></td>
+                                    <td><?php echo $rowbook["TypeNumber"]; ?></td>
+                                    <td><?php echo $rowbook["Name"]; ?></td>
+                                    <td><?php echo $rowbook["current_number"]; ?></td>
+                                    <td><?php echo $rowbook["current_year"]; ?></td>
 
-                                    <td class="edit_booktype">
-                                        <a class="btn btn-secondary waves-effect edit" href="admin-editbook.php?typeid=<?php echo $rowuser["TypeID"]; ?>"><i class="fas fa-edit"></i></a>
+                                    <td>
+                                        <?php
+                                        if ($rowbook["current_number"] == 0) {
+                                            echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"far fa-edit\"></i></a>&nbsp;";
+
+                                            echo "<a class='btn btn-danger waves-effect  cancel-doc ' href='delete-book-delete.php?typeid= {$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')\"><i class=\"fas fa-minus\"></i></a>";
+                                        }
+                                        else{
+                                            echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"fas fa-edit\"></i></a>";
+                                        }
+                                        ?>
+                                        
                                     </td>
                                 </tr>
                             <?php } ?>

@@ -1,11 +1,38 @@
 <?php
 require("dbConn.php");
 session_start();
+date_default_timezone_set("Asia/Bangkok");
 
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
 //     exit;
 // }
+
+$docid = $_GET["docid"];
+
+$userid = $_SESSION['AD_userid'];
+
+$namearr = array('');
+$selectuser = "select Name from type";
+$reql = $db->query($selectuser);
+
+while ($row = mysqli_fetch_array($reql)) {
+    array_push($namearr, $row['Name']);
+}
+
+$nameadd = count($namearr);
+$_SESSION['nameadd'] = $nameadd;
+
+$selectresult = "select resultNumber from document where DocumentID='$docid'";
+$reql = $db->query($selectresult);
+$row = mysqli_fetch_array($reql);
+$resultnum = $row['resultNumber'];
+
+$selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docid'";
+$reql = $db->query($selectnumbook);
+$row = mysqli_fetch_array($reql);
+$typenum = $row['TypeNumber'];
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +42,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไข</title>
+    <title>แก้ไขเอกสาร</title>
 
     <link rel="stylesheet" href="css/ss3.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -124,7 +151,7 @@ session_start();
                             </div>
 
 
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <label for="state" class="form-label">ประเภทหนังสือ</label>
                                 <select class="form-select" id="state" required>
                                     <option value="">เลือกประเภท...</option>
@@ -133,17 +160,26 @@ session_start();
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-4 col-md-4 ">
-                                <label for="zip" class="form-label">ลงวันที่</label>
+                                <label for="zip" class="form-label">เลขเอกสาร</label>
                                 <input type="text" class="form-control" id="zip" placeholder="" required>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
                             </div>
 
-
+                            <div class="col-lg-12">
+                                <label for="firstName" class="form-label">ลงวันที่</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                    
+                                    <div class="invalid-feedback">
+                                        Your username is required.
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
@@ -155,6 +191,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
@@ -164,12 +201,6 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
 
 
                             <div class="col-lg-12">

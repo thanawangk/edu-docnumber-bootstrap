@@ -219,16 +219,16 @@ session_start();
 
                                         <!-- ปุ่ม -->
                                         <td>
-                                            <div class="btn-group me-2" role="group" aria-label="Second group">
+                                            <div class="btn-group" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
                                                 <a href="#" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
-                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-edit-doc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
+                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-danger waves-effect cancel-doc ' href='admin-cancel-doc.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='cancel-doc-update.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
                                                 }
                                                 ?>
                                             </div>
