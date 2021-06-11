@@ -152,7 +152,7 @@ $nameadd = $_SESSION['nameadd'];
                             <h5 class="mb-1">ข้อมูล </h5>
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" name="Name" id="firstName" placeholder="<?php echo $fullname; ?>">
+                                <input type="text" class="form-control" name="Name" id="firstName" value="<?php echo $fullname; ?>">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
@@ -160,7 +160,7 @@ $nameadd = $_SESSION['nameadd'];
 
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" name="Surname" id="lastName" placeholder="<?php echo $lastname; ?>">
+                                <input type="text" class="form-control" name="Surname" id="lastName" value="<?php echo $lastname; ?>">
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -169,7 +169,7 @@ $nameadd = $_SESSION['nameadd'];
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" name="Email" id="email" placeholder="<?php echo $email; ?>" readonly>
+                                <input type="email" class="form-control" name="Email" id="email" value="<?php echo $email; ?>" readonly>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -177,7 +177,7 @@ $nameadd = $_SESSION['nameadd'];
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="Phone" id="address" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>" >
+                                <input type="text" class="form-control" name="Phone" id="address" value="<?php echo $phone; ?>" value="<?php echo $phone; ?>" >
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>

@@ -165,7 +165,7 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">เลขเอกสาร</label>
-                                <input type="text" class="form-control" id="zip" placeholder="อว.6503/<?php echo $typenum ;?>/<?php echo $resultnum;?>" readonly>
+                                <input type="text" class="form-control" id="zip" value="อว.6503/<?php echo $typenum ;?>/<?php echo $resultnum;?>" readonly>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -194,7 +194,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="<?php echo $print_sentname ?>" >
+                                    <input type="text" class="form-control" name="send" id="firstName" value="<?php echo $print_sentname ?>" >
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
@@ -205,7 +205,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="to" id="lastName" placeholder="<?php echo $print_rename ?>" >
+                                    <input type="text" class="form-control" name="to" id="lastName" value="<?php echo $print_rename ?>" >
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -215,15 +215,11 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" name="story" id="address" placeholder="<?php echo $print_text ?>" ></textarea>
+                                <textarea type="text" class="form-control" name="story" id="address" value="<?php echo $print_text ?>" ></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
                             </div>
-
-
-
-
 
 
                         </div>

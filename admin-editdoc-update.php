@@ -26,8 +26,6 @@
             $story = $_POST['story'];
         }
 
-
-        
         $namepdf ="";
         $typefile = $_FILES["fileUpload"]["type"];
 
