@@ -14,7 +14,6 @@
         if($_POST['send'] != '')
         {
             $sead = $_POST['send'];
-            print_r("send".$sead);
         }
 
         if($_POST['to'] != '')
@@ -45,15 +44,17 @@
         if ($reql = $db->query($updatedoc)) {
             echo "Record updated successfully<br>";
         }
+        print_r('l'.$docid);
 
         if($_FILES['fileUpload']['size'] != 0 and $typefile == 'application/pdf')
         {
         $destination = 'uploads/'.$docid.'.pdf';
+        print_r($destination);
         $extension = pathinfo($namepdf, PATHINFO_EXTENSION);
         $size = $_FILES['fileUpload']['size'];
         $file = $_FILES['fileUpload']['tmp_name'];
         if (!in_array($extension, ['pdf', 'docx'])) {
-            echo "You file extension must be .zip, .pdf or .docx";
+            echo "You file extension must be  .pdf or .docx";
         } elseif ($_FILES['fileUpload']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
             echo "File too large!";
         } else {

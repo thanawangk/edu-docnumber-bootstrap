@@ -143,37 +143,50 @@ $typenum = $row['TypeNumber'];
                 <div class="card-body ps-4 pe-4">
 
                     <!-- ฟอร์ม -->
-                    <form class="needs-validation" action="admin-editdoc-update.php?docid=<?php echo $docid; ?>" method="POST" enctype="multipart/form-data" novalidate>
+
+                    <form class="needs-validation" action="admin-editdoc-update.php?docid=<?php echo $docid;?>" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
 
                             <div class="container">
 
                             </div>
 
+
+                            <!-- <div class="col-md-4">
+                                <label for="state" class="form-label">ประเภทหนังสือ</label>
+                                <select class="form-select" id="state" required>
+                                    <option value="">เลือกประเภท...</option>
+                                    <option>California</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div> -->
+
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">เลขเอกสาร</label>
-                                <input type="text" class="form-control" id="zip" value="อว.6503/<?php echo $typenum; ?>/<?php echo $resultnum; ?>" required readonly>
+                                <input type="text" class="form-control" id="zip" placeholder="อว.6503/<?php echo $typenum ;?>/<?php echo $resultnum;?>" readonly>
                                 <div class="invalid-feedback">
-                                    เลขเอกสาร is required.
+                                    Zip code required.
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ลงวันที่</label>
                                 <div class="input-group has-validation">
-                                    <?php
-                                    $selectdoc = "select * from document where DocumentID = '" . $docid . "'";
+                                <?php
+                                    $selectdoc = "select * from document where DocumentID = '".$docid."'";
                                     $reql = $db->query($selectdoc);
                                     $rowdoc = $reql->fetch_assoc();
                                     $print_date = $rowdoc["Date"];
-                                    $print_sentname = $rowdoc["Sent_Name"];
+                                    $print_sentname= $rowdoc["Sent_Name"];
                                     $print_rename = $rowdoc["Receive_Name"];
                                     $print_text = $rowdoc["Text"];
 
                                     echo "<input type='text' class='form-control' id='zip' name='date' value='$print_date' required readonly>";
-                                    ?>
+                                ?>
                                     <div class="invalid-feedback">
-                                        วันที่ is required.
+                                        Your username is required.
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +194,10 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="send" id="firstName" value="<?php echo $print_sentname ?>" required>
+                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="<?php echo $print_sentname ?>" >
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
-                                        ชื่อผู้ส่ง is required.
+                                        Your username is required.
                                     </div>
                                 </div>
                             </div>
@@ -192,9 +205,9 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="to" id="lastName" value="<?php echo $print_rename ?>" required>
+                                    <input type="text" class="form-control" name="to" id="lastName" placeholder="<?php echo $print_rename ?>" >
                                     <div class="invalid-feedback">
-                                        ชื่อผู้ส่ง is required.
+                                        Your username is required.
                                     </div>
                                 </div>
                             </div>
@@ -202,13 +215,19 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" name="story" id="address" placeholder="" required><?php echo $print_text ?></textarea>
+                                <textarea type="text" class="form-control" name="story" id="address" placeholder="<?php echo $print_text ?>" ></textarea>
                                 <div class="invalid-feedback">
-                                    Please enter your shipping header.
+                                    Please enter your shipping address.
                                 </div>
                             </div>
 
+
+
+
+
+
                         </div>
+
 
                         <div class="col-md-6 pt-3">
 
@@ -220,6 +239,8 @@ $typenum = $row['TypeNumber'];
                         </div>
                         <hr class="my-4">
 
+
+
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
@@ -229,6 +250,8 @@ $typenum = $row['TypeNumber'];
                             </div>
                         </div>
 
+
+
                     </form>
 
 
@@ -237,6 +260,7 @@ $typenum = $row['TypeNumber'];
 
                 </div>
             </div>
+
 
 
         </div>
@@ -249,7 +273,39 @@ $typenum = $row['TypeNumber'];
 
 
 
-   
+    <!-- ส่วน Modal -->
+    <div class="modal fade" id="view-detailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id" value="">
+
+                    <label for="num">เลขเอกสาร</label>
+                    <input type="text" name="num" id="num"><br>
+
+                    <label for="sentname">ชื่อผู้ส่ง</label>
+                    <input type="text" name="sentname" id="sentname"><br>
+
+                    <label for="resvname">ชื่อผู้รับ</label>
+                    <input type="text" name="resvname" id="resvname"><br>
+
+                    <label for="text">เรื่อง</label>
+                    <input type="text" name="text" id="text"><br>
+
+                    <label for="status">สถานะ</label>
+                    <input type="text" name="status" id="status"><br>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

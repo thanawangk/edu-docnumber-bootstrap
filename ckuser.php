@@ -1,7 +1,19 @@
 <?php
 session_start();
 require("dbConn.php");
+$namearr = array('');
+$selectuser = "select Name from type";
+$reql = $db->query($selectuser);
 
+while($row = mysqli_fetch_array($reql)){
+    array_push($namearr,$row['Name']);
+}
+    
+$nameadd = count($namearr);
+    
+$_SESSION['nameadd'] = $nameadd;
+    
+$nameadd = count($namearr);
 $name = $_SESSION['user_first_name'];
 $email = $_SESSION['user_email_address'];
 
@@ -9,7 +21,7 @@ $email = $_SESSION['user_email_address'];
     $ckmember = "select Name,UserID,Status,Email,Surname from user where Name = '".$name."' and Email = '".$email."'";
     $result = $db->query($ckmember);
     $row = $result->fetch_assoc();
-    
+    $namearr = array('');
 
     if(isset($row["Name"])!=""){
         $_SESSION['statusfor'] = $row["Status"];

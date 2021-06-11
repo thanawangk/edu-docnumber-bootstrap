@@ -142,7 +142,7 @@ $_SESSION['nameadd'] = $nameadd;
                         $countlist = count($listusetype);                      
                     ?>
 
-                    <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data" novalidate>
+                    <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
 
                             <div class="container">
@@ -229,7 +229,7 @@ $_SESSION['nameadd'] = $nameadd;
 
                             <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <input type="file" name="fileUpload" class="form-control" id="inputGroupFile02">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>
                         </div>
@@ -241,6 +241,7 @@ $_SESSION['nameadd'] = $nameadd;
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
+                                
                                 <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
@@ -256,17 +257,10 @@ $_SESSION['nameadd'] = $nameadd;
 
                 </div>
             </div>
-
-
-
         </div>
-
-
 
         <!-- จบ Section -->
     </section>
-
-
 
 
 

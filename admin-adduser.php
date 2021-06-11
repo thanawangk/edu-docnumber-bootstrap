@@ -116,20 +116,19 @@ session_start();
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" action="admin-adduser-insert.php" method="POST" novalidate>
+                    <form class="needs-validation" action="admin-adduser-insert.php" method="POST">
                         <div class="row g-3">
                             <h5 class="mb-1">ข้อมูล </h5>
+                        <div class="container ">
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstName" name="fname" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
+                                <input type="text" class="form-control" id="firstName" name="fname" placeholder="ชื่อ" required>
                             </div>
+                        </div>
 
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="lastName" name="lname" placeholder="" required>
+                                <input type="text" class="form-control" id="lastName" name="lname" placeholder="นามสกุล" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -138,7 +137,7 @@ session_start();
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" id="email" name="ename" placeholder="@eng.ku.th">
+                                <input type="email" class="form-control" id="email" name="ename" placeholder="@eng.ku.th" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -190,7 +189,7 @@ session_start();
                                     $rowbook = $reql2->fetch_assoc();
                                     $typebookid = $rowbook["TypeID"];
                                 ?>
-                                    <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>">
+                                    <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>" >
                                     <label class="form-check-label ps-1" for="flexCheckDefault"></label>
                                     <?php echo $namearr[$start]."<br>   "; ?>
 

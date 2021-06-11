@@ -8,10 +8,33 @@
     $newword = array('');
     $ii = 1;
     
+    $selectuser = "select * from user where UserID = $userid";
+    $reql = $db->query($selectuser);
+    $rowuser = $reql->fetch_assoc();
+
     $fullname = $_POST['Name'];
     $surname = $_POST['Surname'];
     $email = $_POST['Email'];
     $phone = $_POST['Phone'];
+
+    if($_POST['Name'] == '')
+    {
+        $fullname = $rowuser["Name"];
+    }
+
+    if($_POST['Surname'] == '')
+    {
+        $surname = $rowuser["Surname"];
+    }
+
+    if($_POST['Email'] == '')
+    {
+        $email = $rowuser["Email"];
+    }
+    if($_POST['Phone'] == '')
+    {
+        $phone = $rowuser["Phone"];
+    }
 
     if(isset($_POST['radio1']))
     {
@@ -40,7 +63,6 @@
         $chkid += 1;
     }
     $cnew = count($newword);
-    #print_r($newword);
 
     $cleanuser = "delete from permission where UserID = '".$userid."'";
     if ($reql = $db->query($cleanuser)) {

@@ -226,7 +226,7 @@ session_start();
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
-                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
+                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
                                                     echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
                                                 }
@@ -255,6 +255,8 @@ session_start();
             </div>
 
         </div>
+
+
 
 
         <!-- จบ Section -->
