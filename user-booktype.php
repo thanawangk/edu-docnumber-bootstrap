@@ -118,7 +118,7 @@ session_start();
                             <tr>
                                 <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-                                <th>ปีปัจจุบัน</th>
+                                
                             </tr>
                         </thead>
 
@@ -133,7 +133,7 @@ session_start();
                                 <tr>
                                     <td><?php echo $rowbook["TypeNumber"]; ?></td>
                                     <td><?php echo $rowbook["Name"]; ?></td>
-                                    <td><?php echo $rowbook["current_year"]; ?></td>
+                                    
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -142,7 +142,7 @@ session_start();
                             <tr>
                                 <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-                                <th>ปีปัจจุบัน</th>
+                               
                             </tr>
                         </tfoot>
                     </table>
