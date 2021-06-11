@@ -2,6 +2,9 @@
 require("dbConn.php");
 session_start();
 
+$staruserid = $_GET["userid"];
+$_SESSION["userid"] = $staruserid;
+$nameadd = $_SESSION['nameadd'];
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
 //     exit;
@@ -116,14 +119,40 @@ session_start();
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="admin-edituser-update.php" method="POST" novalidate>
                         <div class="row g-3">
-
+                            <?php
+                                $count = 1;
+                                $selectuser = "select * from permission where UserID = '$staruserid'";
+                                $reql = $db->query($selectuser);
+                                $rowuser = $reql->fetch_assoc();
+                                $userid = $rowuser["UserID"];
+                                $typeuseid = $rowuser["TypeUseID"];
+                                $addarr = strlen($typeuseid);
+                                $ii = 0;
+                                $selectuser = "select * from user where UserID = $staruserid";
+                                $reql = $db->query($selectuser);
+                                $rowuser = $reql->fetch_assoc();
+                                $fullname = $rowuser["Name"];
+                                $lastname = $rowuser["Surname"];
+                                $email = $rowuser["Email"];
+                                $phone = $rowuser["Phone"];
+                                $status_user = $rowuser["Status"];
+                        
+                                $selecttypeuse = "select TypeUseID from permission where UserID = $staruserid";
+                                $reqltype = $db->query($selecttypeuse);
+                        
+                                $listusetype = array('');
+                                while($rowtypeuse = $reqltype->fetch_assoc()) { 
+                                    array_push($listusetype,$rowtypeuse['TypeUseID']);
+                                  }
+                                
+                            ?>
 
                             <h5 class="mb-1">ข้อมูล </h5>
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <input type="text" class="form-control" name="Name" id="firstName" placeholder="<?php echo $fullname; ?>" value="<?php echo $fullname; ?>" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
@@ -131,7 +160,7 @@ session_start();
 
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <input type="text" class="form-control" name="Surname" id="lastName" placeholder="<?php echo $lastname; ?>"value="<?php echo $lastname; ?>" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -140,7 +169,7 @@ session_start();
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" id="email" placeholder="@eng.ku.th">
+                                <input type="email" class="form-control" name="Email" id="email" placeholder="<?php echo $email; ?>" value="<?php echo $email; ?>"  readonly>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -148,7 +177,7 @@ session_start();
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="address" placeholder="0123456789" required>
+                                <input type="text" class="form-control" name="Phone" id="address" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>" required>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -163,26 +192,76 @@ session_start();
 
 
 
-
+                    
                         <h5 class="mb-3">สถานะ </h5>
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
-                        <label class="btn btn-outline-success" for="success-outlined">Admin</label>
+                        <?php if($status_user == 'admin')
+                            {?>
+                            <label class="container">
+                                <input type="radio" class="btn-check" name="radio1" id="radio1"   autocomplete="off" value="admin" checked="checked">
+                                <label id="label1" class="btn btn-outline-success" for="radio1">Admin</label>
+    
+                                <input type="radio" class="btn-check" name="radio2" id="radio2"  autocomplete="off" value="user">
+                                <label id="label2" class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
+                            </label><br>
+                            <?php }else{
+                            ?>
+                                <input type="radio" class="btn-check" name="radio1" id="radio1"  value="admin" autocomplete="off">
+                                <label id="label1" class="btn btn-outline-success" for="radio1">Admin</label>
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-                        <label class="btn btn-outline-danger text-center " for="danger-outlined"> <span class="p-1">User</span> </label>
+                                <input type="radio" class="btn-check" name="radio2" id="radio2" value="user" autocomplete="off" checked="checked">
+                                <label id="label2" class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
+                            </label><br>
+                        <?php } ?>
+
+
 
                         <hr class="my-4">
 
                         <h5 class="mb-3">สิทธ์ประเภท</h5>
+                        <?php
+                            $selectuser = "select * from user where UserID = '" . $userid . "'";
+                            $reql = $db->query($selectuser);
+                            $rowuser = $reql->fetch_assoc(); 
+                            
+                        ?>
 
+                        <div class="form-check" id ="form-check" >
+                                <?php
+                                    $namearr = array('');
+                                    $selectuser = "select Name from type";
+                                    $reql = $db->query($selectuser);
+            
+                                    while($row = mysqli_fetch_array($reql)){
+                                        array_push($namearr,$row['Name']);
+                                    }
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label ps-1" for="flexCheckDefault">
-                                Default checkbox
-                            </label>
-                        </div>
+                                    $start = 1;
+                                    while($start < $nameadd)
+                                    {
+                                        $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
+                                        $reql2 = $db->query($selectbook);
+                                        $rowbook = $reql2->fetch_assoc();
+                                        $typebookid = $rowbook["TypeID"];
+                                        
+                                        if(in_array($typebookid, $listusetype))
+                                        {?>                                           
+                                            <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>" checked="checked">
+                                            <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                                        <?php echo $namearr[$start]."<br>   "; 
+                                        }
+                                         else{ 
+                                        ?>
+                                            <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>">
+                                            <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                                        <?php echo $namearr[$start]."<br>   "; 
+                                        
+                                        }
+                                        $start += 1;  
+                                    
+                                    }
+                                ?>
+                            </div>
 
 
 
@@ -255,8 +334,26 @@ session_start();
             </div>
         </div>
     </div>
+        
+    <script>  
+    var modal = document.getElementById("form-check");
+    var label1 = document.getElementById("label1");
+    var label2 = document.getElementById("label2");
 
+    var radio1 = document.getElementById("radio1");
+    var radio2 = document.getElementById("radio2");
+    radio1.onclick = function() {
+        radio1.checked = true;
+        radio2.checked = false;
+        modal.style.display ="none";
+    }   
 
+    radio2.onclick = function() {
+        radio1.checked = false;
+        radio2.checked = true;
+        modal.style.display ="block";
+    }
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

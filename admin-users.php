@@ -156,7 +156,7 @@ session_start();
                                     <td>
                                         <div class='btn-group' role='group' aria-label='Second group'>
                                             <a class="btn btn-secondary waves-effect edit" href="admin-edituser.php?userid=<?php echo $rowuser["UserID"]; ?>"><i class="fas fa-user-edit"></i></a>
-                                            <a class="btn btn-danger waves-effect delete " href="delete_user.php?userid=<?php echo $rowuser["UserID"]; ?>" onclick="return confirm('คุณต้องการที่จะลบข้อมูลผู้ใช้นี้หรือไม่?');"><i class="fas fa-user-minus"></i></a>
+                                            <a class="btn btn-danger waves-effect delete " href="admin-delectuser.php?userid=<?php echo $rowuser["UserID"]; ?>" onclick="return confirm('คุณต้องการที่จะลบข้อมูลผู้ใช้นี้หรือไม่?');"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

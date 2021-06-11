@@ -2,6 +2,16 @@
 require("dbConn.php");
 session_start();
 
+$namearr = array('');
+$selectuser = "select Name from type";
+$reql = $db->query($selectuser);
+
+while($row = mysqli_fetch_array($reql)){
+    array_push($namearr,$row['Name']);
+}
+
+$nameadd = count($namearr);
+$_SESSION['nameadd'] = $nameadd;
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
 //     exit;
@@ -117,8 +127,22 @@ session_start();
                 <div class="card-body ps-4 pe-4">
 
                     <!-- ฟอร์ม -->
+                    <?php
+                        $user_id = $_SESSION['AD_userid'];
+                        $date_y=(date("Y")+543);
+                        /*SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission 
+                        INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = 'ปีปัจจุบัน'*/
+                        $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";      
+                        $reqltype = $db->query($selecttypeuse);
+                        
+                        $listusetype = array('');
+                        while($rowtypeuse = $reqltype->fetch_assoc()) { 
+                            array_push($listusetype,$rowtypeuse['TypeUseID']);
+                           }
+                        $countlist = count($listusetype);                      
+                    ?>
 
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data" novalidate>
                         <div class="row g-3">
 
                             <div class="container">
@@ -128,18 +152,35 @@ session_start();
 
                             <div class="col-md-4">
                                 <label for="state" class="form-label">ประเภทหนังสือ</label>
-                                <select class="form-select" id="state" required>
-                                    <option value="">เลือกประเภท...</option>
-                                    <option>California</option>
+                                <select class="form-select" name="type_id"  id="state" required>
+                                    <option value="">---------กรุณาเลือกเอกสาร---------</option>
+                                    <?php
+                                        $loop = 1; 
+                                        while($loop < $countlist){
+                                            $selecttype = "select * from type where TypeID = '$listusetype[$loop]'";
+                                            $reql = $db->query($selecttype);
+                                            $rowtype = $reql->fetch_assoc();
+                                            $namebook = $rowtype['Name'];
+                                    ?>
+                                        <option name = "drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
+                                    <?php 
+                                        $loop +=1;
+                                    }?>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
                             </div>
 
+
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">ลงวันที่</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <?php
+                                    $date_d=date("d-m"); // วัน เดือน
+                                    $date_y=(date("Y")+543); // ปี
+                                    $date_t=date("H:i:s"); // เวลา
+                                    echo "<input type='text' class='form-control' id='zip' name='date' value='$date_d-$date_y' required readonly>";
+                                ?>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -150,7 +191,7 @@ session_start();
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="ชื่อ-นามสกุล" required>
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
@@ -161,7 +202,7 @@ session_start();
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
 
-                                    <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                    <input type="text" class="form-control" name="to" id="lastName" placeholder="ชื่อ-นามสกุล" required>
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -170,7 +211,7 @@ session_start();
 
                             <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
+                                <textarea type="text" class="form-control" name="story" id="address" placeholder="" required></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -199,7 +240,7 @@ session_start();
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
+                                <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
                                 <button class="btn btn-danger ms-2">ยกเลิก</button>
 
                             </div>

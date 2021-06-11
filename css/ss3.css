@@ -122,6 +122,36 @@
     
     color: #fff;
 }
+.C_nav4{
+    height: 3rem;
+    background:#12343b;
+    border-radius: 1rem; 
+}
+
+.C_nav4 li a{
+    transition: .3s;
+    color:#fff ;
+}
+
+.C_nav4 li a:hover{
+    
+    color: #fff;
+}
+.C_nav5{
+    height: 3rem;
+    background:#2d545e;
+    border-radius: 1rem; 
+}
+
+.C_nav5 li a{
+    transition: .3s;
+    color:#fff ;
+}
+
+.C_nav5 li a:hover{
+    
+    color: #fff;
+}
 
 /* addbooktypeB */
 .add_booktype_user{

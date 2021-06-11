@@ -33,6 +33,7 @@ $reql = $db->query($selectnumbook);
 $row = mysqli_fetch_array($reql);
 $typenum = $row['TypeNumber'];
 
+
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +144,7 @@ $typenum = $row['TypeNumber'];
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="admin-editdoc-update.php?docid=<?php echo $docid;?>" method="POST" enctype="multipart/form-data" novalidate>
                         <div class="row g-3">
 
                             <div class="container">
@@ -164,7 +165,7 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">เลขเอกสาร</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <input type="text" class="form-control" id="zip" placeholder="อว.6503/<?php echo $typenum ;?>/<?php echo $resultnum;?>" required readonly>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -173,8 +174,17 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ลงวันที่</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
-                                    
+                                <?php
+                                    $selectdoc = "select * from document where DocumentID = '".$docid."'";
+                                    $reql = $db->query($selectdoc);
+                                    $rowdoc = $reql->fetch_assoc();
+                                    $print_date = $rowdoc["Date"];
+                                    $print_sentname= $rowdoc["Sent_Name"];
+                                    $print_rename = $rowdoc["Receive_Name"];
+                                    $print_text = $rowdoc["Text"];
+
+                                    echo "<input type='text' class='form-control' id='zip' name='date' value='$print_date' required readonly>";
+                                ?>
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -184,7 +194,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="<?php echo $print_sentname ?>" required>
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
@@ -195,7 +205,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                    <input type="text" class="form-control" name="to" id="lastName" placeholder="<?php echo $print_rename ?>" required>
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -205,7 +215,7 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
+                                <textarea type="text" class="form-control" name="story" id="address" placeholder="<?php echo $print_text ?>" required></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -223,7 +233,7 @@ $typenum = $row['TypeNumber'];
 
                             <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <input type="file" class="form-control" name="fileUpload" id="inputGroupFile02">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>
                         </div>
@@ -234,8 +244,8 @@ $typenum = $row['TypeNumber'];
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
-                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
+                                <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
+                                <button class="btn btn-danger ms-2">ยกเลิก</button>
 
                             </div>
                         </div>

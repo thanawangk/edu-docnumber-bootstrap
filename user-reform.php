@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มสมาชิก</title>
+    <title>กรอกย้อนหลัง</title>
 
     <link rel="stylesheet" href="css/ss3.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -29,11 +29,11 @@ session_start();
 
     <style>
         body {
-            /* height: 768px; */
-            background: linear-gradient(to right,
-                    #164A41, #4D774E, #9DC88D);
-            font-family: 'Sarabun', sans-serif;
-        }
+           
+           background: linear-gradient(to right,
+           #12343b,#2d545e, #9DC88D);
+           font-family: 'Sarabun', sans-serif;
+       }
     </style>
 
 </head>
@@ -94,11 +94,14 @@ session_start();
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="admin-home.php" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
-                        <li><a href="admin-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
-                        <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <li><a href="user-home.php" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
+                        <li><a href="user-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
+
+                        <div class="C_nav3">
+                            <li><a href="user-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        </div>
+
+                        
                     </ul>
                 </div>
             </header>
@@ -110,96 +113,92 @@ session_start();
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                    <h3>เพิ่มสมาชิก</h3>
+                    <h3>กรอกขอย้อนหลัง</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" action="admin-adduser-insert.php" method="POST" novalidate>
+                    <form class="needs-validation" novalidate>
                         <div class="row g-3">
-                            <h5 class="mb-1">ข้อมูล </h5>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstName" name="fname" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="lastName" name="lname" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                            <div class="container">
+
                             </div>
 
 
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" id="email" name="ename" placeholder="@eng.ku.th">
+                            <div class="col-md-4">
+                                <label for="state" class="form-label">ประเภทหนังสือ</label>
+                                <select class="form-select" id="state" required>
+                                    <option value="">เลือกประเภท...</option>
+                                    <option>California</option>
+                                </select>
                                 <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
+                                    Please provide a valid state.
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <label for="address" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="address" name="phonenum" placeholder="0123456789" required>
+                            <div class="col-lg-4 col-md-4 ">
+                                <label for="zip" class="form-label">ลงวันที่</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                    <span class="input-group-text">ถึง</span>
+                                    <div class="invalid-feedback">
+                                        Your username is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="lastName" class="form-label">ชื่อผู้รับ</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Your username is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="col-lg-12">
+                                <label for="address" class="form-label">เรื่อง</label>
+                                <textarea type="text" class="form-control" id="address" placeholder="" required></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
                             </div>
+
+
+
+
+
+
                         </div>
 
-                        <hr class="my-4">
 
+                        <div class="col-md-6 pt-3">
 
-                        <h5 class="mb-3">สถานะ </h5>
-                        <input type="radio" class="btn-check" name="radio1" id="radio1" autocomplete="off"  value="admin">
-                        <label class="btn btn-outline-success" for="radio1">Admin</label>
-                        <input type="radio" class="btn-check" name="radio1" id="radio2" autocomplete="off" value ="user" >
-                        <label class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
-
-                        <hr class="my-4">
-
-                        <h5 class="mb-3">สิทธ์ประเภท</h5>
-                        <div class="form-check" id ="form-check" style="display:none">
-                            <?php
-                                #select Book
-                                $namearr = array('');
-                                $selectuser = "select Name from type";
-                                $reql = $db->query($selectuser);
-
-                                while($row = mysqli_fetch_array($reql)){
-                                    array_push($namearr,$row['Name']);
-                                }
-                                    
-                                $nameadd = count($namearr);
-                                    
-                                $_SESSION['nameadd'] = $nameadd;
-                                    
-                                $nameadd = count($namearr);
-                                                    
-                                $start = 1;
-                                while($start < $nameadd)
-                                {
-                                    $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
-                                    $reql2 = $db->query($selectbook);
-                                    $rowbook = $reql2->fetch_assoc();
-                                    $typebookid = $rowbook["TypeID"];
-                                ?>
-                                    <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>">
-                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                    <?php echo $namearr[$start]."<br>   "; ?>
-
-                                <?php
-                                    $start += 1;  
-                                } 
-                            ?>
+                            <label for="address2" class="form-label">อัพโหลดไฟล์ <span class="text-muted">(Optional)</span></label>
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            </div>
                         </div>
-
                         <hr class="my-4">
 
 
@@ -207,8 +206,8 @@ session_start();
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
-                            <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
-                                <a href="admin-users.php" class="btn btn-danger ms-2">ยกเลิก</a>
+                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
+                                <button class="btn btn-danger ms-2">ยกเลิก</button>
 
                             </div>
                         </div>
@@ -269,22 +268,8 @@ session_start();
         </div>
     </div>
 
-    <script>
-    var modal = document.getElementById("form-check");
-    var radio1 = document.getElementById("radio1");
-    var radio2 = document.getElementById("radio2");
-    radio1.onclick = function() {
-        radio1.checked = true;
-        radio2.checked = false;
-        modal.style.display = "none";
-    }   
 
-    radio2.onclick = function() {
-        radio1.checked = false;
-        radio2.checked = true;
-        modal.style.display = "block";
-    }
-    </script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -305,7 +290,7 @@ session_start();
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
-    &copy; 2017–2021 Company, Inc. </>
+    <p>&copy; 2017–2021 Company, Inc. </p>
 </footer>
 
 </html>
