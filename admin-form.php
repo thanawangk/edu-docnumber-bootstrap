@@ -241,7 +241,7 @@ $_SESSION['nameadd'] = $nameadd;
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
-                                <button class="btn btn-danger ms-2">ยกเลิก</button>
+                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -268,39 +268,6 @@ $_SESSION['nameadd'] = $nameadd;
 
 
 
-
-    <!-- ส่วน Modal -->
-    <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
-
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
-
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
-
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
-
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
-
-                    <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

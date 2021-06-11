@@ -98,7 +98,7 @@ session_start();
                         <div class="C_nav5">
                             <li><a href="user-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
                         </div>
-                        <li><a href="user-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                         
                     </ul>
                 </div>

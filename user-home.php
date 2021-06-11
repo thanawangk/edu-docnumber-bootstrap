@@ -103,7 +103,7 @@ session_start();
                             <li><a href="user-home.php" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
                         </div>
                         <li><a href="user-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="user-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                         
                     </ul>
                 </div>
@@ -133,7 +133,7 @@ session_start();
                         <tbody>
                             <!-- ดึงข้อมูลจากDB document * -->
                             <?php
-                            $selectdoc = "select * from document ";
+                            $selectdoc = "select * from document where Sent_Name = '".$_SESSION["USE_name"]."'";
                             $reql = $db->query($selectdoc);
                             while ($rowdoc = $reql->fetch_assoc()) {
 
@@ -227,7 +227,7 @@ session_start();
                                                 if ($rowdoc["Status"] == 1) {
                                                     echo "<a class='btn btn-secondary waves-effect edit-doc' href='user-editdoc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='cancel-doc-update.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='user-doc-cancel.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
                                                 }
                                                 ?>
                                             </div>

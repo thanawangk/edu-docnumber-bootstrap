@@ -123,7 +123,7 @@ $typenum = $row['TypeNumber'];
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="user-home.php" class="nav-link px-2 link-secondary">หน้าแรก</a></li>
                         <li><a href="user-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
-                        <li><a href="user-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
+                        <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
                     </ul>
                 </div>
             </header>
@@ -233,7 +233,7 @@ $typenum = $row['TypeNumber'];
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" type="submit">ตกลง</button>
-                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
+                                <a href="user-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -259,40 +259,6 @@ $typenum = $row['TypeNumber'];
     </section>
 
 
-
-
-    <!-- ส่วน Modal -->
-    <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
-
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
-
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
-
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
-
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
-
-                    <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
