@@ -28,6 +28,7 @@ $email = $_SESSION['user_email_address'];
         if($row["Status"]=="user"){
             $_SESSION["USE_userid"] = $row["UserID"];
             $_SESSION["USE_name"] = $row["Name"];
+            $_SESSION["USE_surname"] = $row["Surname"];
             $_SESSION["USE_email"] = $row["Email"];
             $_SESSION['USE_status'] = $row["Status"];
             echo "<script>";

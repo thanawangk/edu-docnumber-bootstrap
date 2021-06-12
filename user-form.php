@@ -177,7 +177,7 @@ session_start();
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="ชื่อ-นามสกุล" value="<?php echo $_SESSION["USE_name"] ?>" readonly required>
+                                    <input type="text" class="form-control" name="send" id="firstName" placeholder="ชื่อ-นามสกุล" value="<?php echo $_SESSION["USE_name"].' '.$_SESSION["USE_surname"] ?>" readonly required>
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
