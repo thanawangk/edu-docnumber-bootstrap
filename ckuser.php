@@ -47,7 +47,7 @@ $email = $_SESSION['user_email_address'];
         }
     }else{
       echo "<script>";
-      echo "alert('บ่มี ชื่อผู้ใช้งานหรือรหัสผ่านผิด');"; 
+      echo "alert('ไม่มีชื่อผู้ใช้งานหรือรหัสผ่านผิด');"; 
       echo "window.history.back()";
       echo "</script>";  
     }

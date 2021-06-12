@@ -133,7 +133,11 @@ session_start();
                         <tbody>
                             <!-- ดึงข้อมูลจากDB document * -->
                             <?php
-                            $selectdoc = "select * from document where Sent_Name = '".$_SESSION["USE_name"]."'";
+                            
+                            $username = $_SESSION["USE_name"].' '.$_SESSION["USE_surname"];
+
+                            //$selectdoc = "select * from document where Sent_Name = '".$_SESSION["USE_name"]."' ";
+                            $selectdoc = "select * from document where Sent_Name = '$username' ";
                             $reql = $db->query($selectdoc);
                             while ($rowdoc = $reql->fetch_assoc()) {
 
