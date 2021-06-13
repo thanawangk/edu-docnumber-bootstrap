@@ -79,7 +79,7 @@ $typeid = $_GET["typeid"];
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -194,38 +194,6 @@ $typeid = $_GET["typeid"];
 
 
 
-    <!-- ส่วน Modal -->
-    <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
-
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
-
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
-
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
-
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
-
-                    <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -240,7 +208,7 @@ $typeid = $_GET["typeid"];
         $('.mydatatable').DataTable();
     </script>
 
-    <script type="text/javascript" src="viewmodal.js"></script>
+
 
 
 </body>

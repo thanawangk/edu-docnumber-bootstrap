@@ -75,7 +75,7 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -119,12 +119,12 @@ session_start();
                     <form class="needs-validation" action="admin-adduser-insert.php" method="POST">
                         <div class="row g-3">
                             <h5 class="mb-1">ข้อมูล </h5>
-                        <div class="container ">
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstName" name="fname" placeholder="ชื่อ" required>
+                            <div class="container ">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="firstName" name="fname" placeholder="ชื่อ" required>
+                                </div>
                             </div>
-                        </div>
 
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Last name</label>
@@ -156,46 +156,45 @@ session_start();
 
 
                         <h5 class="mb-3">สถานะ </h5>
-                        <input type="radio" class="btn-check" name="radio1" id="radio1" autocomplete="off"  value="admin">
+                        <input type="radio" class="btn-check" name="radio1" id="radio1" autocomplete="off" value="admin">
                         <label class="btn btn-outline-success" for="radio1">Admin</label>
-                        <input type="radio" class="btn-check" name="radio1" id="radio2" autocomplete="off" value ="user" >
+                        <input type="radio" class="btn-check" name="radio1" id="radio2" autocomplete="off" value="user">
                         <label class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
 
                         <hr class="my-4">
 
                         <h5 class="mb-3">สิทธ์ประเภท</h5>
-                        <div class="form-check" id ="form-check" style="display:none">
+                        <div class="form-check" id="form-check" style="display:none">
                             <?php
-                                #select Book
-                                $namearr = array('');
-                                $selectuser = "select Name from type";
-                                $reql = $db->query($selectuser);
+                            #select Book
+                            $namearr = array('');
+                            $selectuser = "select Name from type";
+                            $reql = $db->query($selectuser);
 
-                                while($row = mysqli_fetch_array($reql)){
-                                    array_push($namearr,$row['Name']);
-                                }
-                                    
-                                $nameadd = count($namearr);
-                                    
-                                $_SESSION['nameadd'] = $nameadd;
-                                    
-                                $nameadd = count($namearr);
-                                                    
-                                $start = 1;
-                                while($start < $nameadd)
-                                {
-                                    $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
-                                    $reql2 = $db->query($selectbook);
-                                    $rowbook = $reql2->fetch_assoc();
-                                    $typebookid = $rowbook["TypeID"];
-                                ?>
-                                    <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>" >
-                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                    <?php echo $namearr[$start]."<br>   "; ?>
+                            while ($row = mysqli_fetch_array($reql)) {
+                                array_push($namearr, $row['Name']);
+                            }
 
-                                <?php
-                                    $start += 1;  
-                                } 
+                            $nameadd = count($namearr);
+
+                            $_SESSION['nameadd'] = $nameadd;
+
+                            $nameadd = count($namearr);
+
+                            $start = 1;
+                            while ($start < $nameadd) {
+                                $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
+                                $reql2 = $db->query($selectbook);
+                                $rowbook = $reql2->fetch_assoc();
+                                $typebookid = $rowbook["TypeID"];
+                            ?>
+                                <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>">
+                                <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                                <?php echo $namearr[$start] . "<br>   "; ?>
+
+                            <?php
+                                $start += 1;
+                            }
                             ?>
                         </div>
 
@@ -206,7 +205,7 @@ session_start();
                         <div class="row gy-3 mt-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
 
-                            <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
+                                <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
                                 <a href="admin-users.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
@@ -235,54 +234,23 @@ session_start();
 
 
 
-    <!-- ส่วน Modal -->
-    <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
 
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
-
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
-
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
-
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
-
-                    <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-    var modal = document.getElementById("form-check");
-    var radio1 = document.getElementById("radio1");
-    var radio2 = document.getElementById("radio2");
-    radio1.onclick = function() {
-        radio1.checked = true;
-        radio2.checked = false;
-        modal.style.display = "none";
-    }   
+        var modal = document.getElementById("form-check");
+        var radio1 = document.getElementById("radio1");
+        var radio2 = document.getElementById("radio2");
+        radio1.onclick = function() {
+            radio1.checked = true;
+            radio2.checked = false;
+            modal.style.display = "none";
+        }
 
-    radio2.onclick = function() {
-        radio1.checked = false;
-        radio2.checked = true;
-        modal.style.display = "block";
-    }
+        radio2.onclick = function() {
+            radio1.checked = false;
+            radio2.checked = true;
+            modal.style.display = "block";
+        }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -295,7 +263,7 @@ session_start();
         $('.mydatatable').DataTable();
     </script>
 
-    <script type="text/javascript" src="viewmodal.js"></script>
+
 
 
 </body>

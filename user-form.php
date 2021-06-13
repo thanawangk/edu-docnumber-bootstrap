@@ -75,7 +75,7 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -253,7 +253,7 @@ session_start();
         $('.mydatatable').DataTable();
     </script>
 
-    <script type="text/javascript" src="viewmodal.js"></script>
+  
 
 
 </body>

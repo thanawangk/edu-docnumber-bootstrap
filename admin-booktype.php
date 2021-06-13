@@ -33,11 +33,6 @@ session_start();
                     #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
-
-        /* body {
-            background-color: #08e1ae;
-            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
-        } */
     </style>
 
 </head>
@@ -78,20 +73,18 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </header>
 
+        <!-- ล่างหัวบน -->
         <div class="container col-lg-8 bg-light p-3">
-
-            <!-- ล่างหัวบน -->
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
             </div>
-
         </div>
 
         <!-- แถบเมนู -->
@@ -154,13 +147,11 @@ session_start();
                                             <a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"far fa-edit\"></i></a>
                                             <a class='btn btn-danger waves-effect  cancel-doc ' href='delete-book-delete.php?typeid= {$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')\"><i class=\"fas fa-minus\"></i></a>
                                             </div>";
-
-                                        }
-                                        else{
+                                        } else {
                                             echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"fas fa-edit\"></i></a>";
                                         }
                                         ?>
-                                        
+
                                     </td>
                                 </tr>
                             <?php } ?>

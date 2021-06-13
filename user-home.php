@@ -28,17 +28,11 @@ session_start();
 
     <style>
         body {
-           
+
             background: linear-gradient(to right,
-            #12343b,#2d545e, #9DC88D);
+                    #12343b, #2d545e, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
-
-
-        /* body {
-            background-color: #08e1ae;
-            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
-        } */
     </style>
 
 </head>
@@ -80,7 +74,7 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -104,7 +98,7 @@ session_start();
                         </div>
                         <li><a href="user-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
                         <li><a href="user-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        
+
                     </ul>
                 </div>
             </header>
@@ -133,8 +127,8 @@ session_start();
                         <tbody>
                             <!-- ดึงข้อมูลจากDB document * -->
                             <?php
-                            
-                            $username = $_SESSION["USE_name"].' '.$_SESSION["USE_surname"];
+
+                            $username = $_SESSION["USE_name"] . ' ' . $_SESSION["USE_surname"];
 
                             //$selectdoc = "select * from document where Sent_Name = '".$_SESSION["USE_name"]."' ";
                             $selectdoc = "select * from document where Sent_Name = '$username' ";
@@ -259,12 +253,8 @@ session_start();
 
         </div>
 
-
-
-
         <!-- จบ Section -->
     </section>
-
 
 
     <!-- ส่วน Modal -->

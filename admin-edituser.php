@@ -78,7 +78,7 @@ $nameadd = $_SESSION['nameadd'];
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -119,34 +119,34 @@ $nameadd = $_SESSION['nameadd'];
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" action="admin-edituser-update.php" method="POST" >
+                    <form class="needs-validation" action="admin-edituser-update.php" method="POST">
                         <div class="row g-3">
                             <?php
-                                $count = 1;
-                                $selectuser = "select * from permission where UserID = '$staruserid'";
-                                $reql = $db->query($selectuser);
-                                $rowuser = $reql->fetch_assoc();
-                                $userid = $rowuser["UserID"];
-                                $typeuseid = $rowuser["TypeUseID"];
-                                $addarr = strlen($typeuseid);
-                                $ii = 0;
-                                $selectuser = "select * from user where UserID = $staruserid";
-                                $reql = $db->query($selectuser);
-                                $rowuser = $reql->fetch_assoc();
-                                $fullname = $rowuser["Name"];
-                                $lastname = $rowuser["Surname"];
-                                $email = $rowuser["Email"];
-                                $phone = $rowuser["Phone"];
-                                $status_user = $rowuser["Status"];
-                        
-                                $selecttypeuse = "select TypeUseID from permission where UserID = $staruserid";
-                                $reqltype = $db->query($selecttypeuse);
-                        
-                                $listusetype = array('');
-                                while($rowtypeuse = $reqltype->fetch_assoc()) { 
-                                    array_push($listusetype,$rowtypeuse['TypeUseID']);
-                                  }
-                                
+                            $count = 1;
+                            $selectuser = "select * from permission where UserID = '$staruserid'";
+                            $reql = $db->query($selectuser);
+                            $rowuser = $reql->fetch_assoc();
+                            $userid = $rowuser["UserID"];
+                            $typeuseid = $rowuser["TypeUseID"];
+                            $addarr = strlen($typeuseid);
+                            $ii = 0;
+                            $selectuser = "select * from user where UserID = $staruserid";
+                            $reql = $db->query($selectuser);
+                            $rowuser = $reql->fetch_assoc();
+                            $fullname = $rowuser["Name"];
+                            $lastname = $rowuser["Surname"];
+                            $email = $rowuser["Email"];
+                            $phone = $rowuser["Phone"];
+                            $status_user = $rowuser["Status"];
+
+                            $selecttypeuse = "select TypeUseID from permission where UserID = $staruserid";
+                            $reqltype = $db->query($selecttypeuse);
+
+                            $listusetype = array('');
+                            while ($rowtypeuse = $reqltype->fetch_assoc()) {
+                                array_push($listusetype, $rowtypeuse['TypeUseID']);
+                            }
+
                             ?>
 
                             <h5 class="mb-1">ข้อมูล </h5>
@@ -177,7 +177,7 @@ $nameadd = $_SESSION['nameadd'];
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="Phone" id="address" value="<?php echo $phone; ?>" value="<?php echo $phone; ?>" >
+                                <input type="text" class="form-control" name="Phone" id="address" value="<?php echo $phone; ?>" value="<?php echo $phone; ?>">
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -192,25 +192,24 @@ $nameadd = $_SESSION['nameadd'];
 
 
 
-                    
+
                         <h5 class="mb-3">สถานะ </h5>
 
-                        <?php if($status_user == 'admin')
-                            {?>
+                        <?php if ($status_user == 'admin') { ?>
                             <label class="container">
-                                <input type="radio" class="btn-check" name="radio1" id="radio1"   autocomplete="off" value="admin" checked="checked">
-                                <label id="label1" class="btn btn-outline-success" for="radio1">Admin</label>
-    
-                                <input type="radio" class="btn-check" name="radio2" id="radio2"  autocomplete="off" value="user">
-                                <label id="label2" class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
-                            </label><br>
-                            <?php }else{
-                            ?>
-                                <input type="radio" class="btn-check" name="radio1" id="radio1"  value="admin" autocomplete="off">
+                                <input type="radio" class="btn-check" name="radio1" id="radio1" autocomplete="off" value="admin" checked="checked">
                                 <label id="label1" class="btn btn-outline-success" for="radio1">Admin</label>
 
-                                <input type="radio" class="btn-check" name="radio2" id="radio2" value="user" autocomplete="off" checked="checked">
+                                <input type="radio" class="btn-check" name="radio2" id="radio2" autocomplete="off" value="user">
                                 <label id="label2" class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
+                            </label><br>
+                        <?php } else {
+                        ?>
+                            <input type="radio" class="btn-check" name="radio1" id="radio1" value="admin" autocomplete="off">
+                            <label id="label1" class="btn btn-outline-success" for="radio1">Admin</label>
+
+                            <input type="radio" class="btn-check" name="radio2" id="radio2" value="user" autocomplete="off" checked="checked">
+                            <label id="label2" class="btn btn-outline-danger text-center " for="radio2"> <span class="p-1">User</span> </label>
                             </label><br>
                         <?php } ?>
 
@@ -220,48 +219,43 @@ $nameadd = $_SESSION['nameadd'];
 
                         <h5 class="mb-3">สิทธ์ประเภท</h5>
                         <?php
-                            $selectuser = "select * from user where UserID = '" . $userid . "'";
-                            $reql = $db->query($selectuser);
-                            $rowuser = $reql->fetch_assoc(); 
-                            
+                        $selectuser = "select * from user where UserID = '" . $userid . "'";
+                        $reql = $db->query($selectuser);
+                        $rowuser = $reql->fetch_assoc();
+
                         ?>
 
-                        <div class="form-check" id ="form-check" >
-                                <?php
-                                    $namearr = array('');
-                                    $selectuser = "select Name from type";
-                                    $reql = $db->query($selectuser);
-            
-                                    while($row = mysqli_fetch_array($reql)){
-                                        array_push($namearr,$row['Name']);
-                                    }
+                        <div class="form-check" id="form-check">
+                            <?php
+                            $namearr = array('');
+                            $selectuser = "select Name from type";
+                            $reql = $db->query($selectuser);
 
-                                    $start = 1;
-                                    while($start < $nameadd)
-                                    {
-                                        $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
-                                        $reql2 = $db->query($selectbook);
-                                        $rowbook = $reql2->fetch_assoc();
-                                        $typebookid = $rowbook["TypeID"];
-                                        
-                                        if(in_array($typebookid, $listusetype))
-                                        {?>                                           
-                                            <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>" checked="checked">
-                                            <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                        <?php echo $namearr[$start]."<br>   "; 
-                                        }
-                                         else{ 
-                                        ?>
-                                            <input  class="form-check-input" type="checkbox" id="chk<?php echo $start;?>" name="chk<?php echo $start;?>" value="<?php echo $typebookid ?>">
-                                            <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                        <?php echo $namearr[$start]."<br>   "; 
-                                        
-                                        }
-                                        $start += 1;  
-                                    
-                                    }
+                            while ($row = mysqli_fetch_array($reql)) {
+                                array_push($namearr, $row['Name']);
+                            }
+
+                            $start = 1;
+                            while ($start < $nameadd) {
+                                $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
+                                $reql2 = $db->query($selectbook);
+                                $rowbook = $reql2->fetch_assoc();
+                                $typebookid = $rowbook["TypeID"];
+
+                                if (in_array($typebookid, $listusetype)) { ?>
+                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>" checked="checked">
+                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                                <?php echo $namearr[$start] . "<br>   ";
+                                } else {
                                 ?>
-                            </div>
+                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>">
+                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                            <?php echo $namearr[$start] . "<br>   ";
+                                }
+                                $start += 1;
+                            }
+                            ?>
+                        </div>
 
 
 
@@ -334,25 +328,25 @@ $nameadd = $_SESSION['nameadd'];
             </div>
         </div>
     </div>
-        
-    <script>  
-    var modal = document.getElementById("form-check");
-    var label1 = document.getElementById("label1");
-    var label2 = document.getElementById("label2");
 
-    var radio1 = document.getElementById("radio1");
-    var radio2 = document.getElementById("radio2");
-    radio1.onclick = function() {
-        radio1.checked = true;
-        radio2.checked = false;
-        modal.style.display ="none";
-    }   
+    <script>
+        var modal = document.getElementById("form-check");
+        var label1 = document.getElementById("label1");
+        var label2 = document.getElementById("label2");
 
-    radio2.onclick = function() {
-        radio1.checked = false;
-        radio2.checked = true;
-        modal.style.display ="block";
-    }
+        var radio1 = document.getElementById("radio1");
+        var radio2 = document.getElementById("radio2");
+        radio1.onclick = function() {
+            radio1.checked = true;
+            radio2.checked = false;
+            modal.style.display = "none";
+        }
+
+        radio2.onclick = function() {
+            radio1.checked = false;
+            radio2.checked = true;
+            modal.style.display = "block";
+        }
     </script>
 
 

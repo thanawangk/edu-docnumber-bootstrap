@@ -6,8 +6,8 @@ $namearr = array('');
 $selectuser = "select Name from type";
 $reql = $db->query($selectuser);
 
-while($row = mysqli_fetch_array($reql)){
-    array_push($namearr,$row['Name']);
+while ($row = mysqli_fetch_array($reql)) {
+    array_push($namearr, $row['Name']);
 }
 
 $nameadd = count($namearr);
@@ -85,7 +85,7 @@ $_SESSION['nameadd'] = $nameadd;
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
+                            <li><a class="dropdown-item" href="logout.php" onclick="return confirm('คุณต้องการออกจากระบบใช่หรือไม่?')"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -128,18 +128,18 @@ $_SESSION['nameadd'] = $nameadd;
 
                     <!-- ฟอร์ม -->
                     <?php
-                        $user_id = $_SESSION['AD_userid'];
-                        $date_y=(date("Y")+543);
-                        /*SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission 
+                    $user_id = $_SESSION['AD_userid'];
+                    $date_y = (date("Y") + 543);
+                    /*SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission 
                         INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = 'ปีปัจจุบัน'*/
-                        $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";      
-                        $reqltype = $db->query($selecttypeuse);
-                        
-                        $listusetype = array('');
-                        while($rowtypeuse = $reqltype->fetch_assoc()) { 
-                            array_push($listusetype,$rowtypeuse['TypeUseID']);
-                           }
-                        $countlist = count($listusetype);                      
+                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
+                    $reqltype = $db->query($selecttypeuse);
+
+                    $listusetype = array('');
+                    while ($rowtypeuse = $reqltype->fetch_assoc()) {
+                        array_push($listusetype, $rowtypeuse['TypeUseID']);
+                    }
+                    $countlist = count($listusetype);
                     ?>
 
                     <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
@@ -152,20 +152,20 @@ $_SESSION['nameadd'] = $nameadd;
 
                             <div class="col-md-4">
                                 <label for="state" class="form-label">ประเภทหนังสือ</label>
-                                <select class="form-select" name="type_id"  id="state" required>
+                                <select class="form-select" name="type_id" id="state" required>
                                     <option value="">---------กรุณาเลือกเอกสาร---------</option>
                                     <?php
-                                        $loop = 1; 
-                                        while($loop < $countlist){
-                                            $selecttype = "select * from type where TypeID = '$listusetype[$loop]'";
-                                            $reql = $db->query($selecttype);
-                                            $rowtype = $reql->fetch_assoc();
-                                            $namebook = $rowtype['Name'];
+                                    $loop = 1;
+                                    while ($loop < $countlist) {
+                                        $selecttype = "select * from type where TypeID = '$listusetype[$loop]'";
+                                        $reql = $db->query($selecttype);
+                                        $rowtype = $reql->fetch_assoc();
+                                        $namebook = $rowtype['Name'];
                                     ?>
-                                        <option name = "drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
-                                    <?php 
-                                        $loop +=1;
-                                    }?>
+                                        <option name="drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
+                                    <?php
+                                        $loop += 1;
+                                    } ?>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
@@ -176,10 +176,10 @@ $_SESSION['nameadd'] = $nameadd;
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">ลงวันที่</label>
                                 <?php
-                                    $date_d=date("d-m"); // วัน เดือน
-                                    $date_y=(date("Y")+543); // ปี
-                                    $date_t=date("H:i:s"); // เวลา
-                                    echo "<input type='text' class='form-control' id='zip' name='date' value='$date_d-$date_y' required readonly>";
+                                $date_d = date("d-m"); // วัน เดือน
+                                $date_y = (date("Y") + 543); // ปี
+                                $date_t = date("H:i:s"); // เวลา
+                                echo "<input type='text' class='form-control' id='zip' name='date' value='$date_d-$date_y' required readonly>";
                                 ?>
                                 <div class="invalid-feedback">
                                     Zip code required.
@@ -241,8 +241,8 @@ $_SESSION['nameadd'] = $nameadd;
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
-                                
-                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
+
+                                <a href="admin-form.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -276,7 +276,7 @@ $_SESSION['nameadd'] = $nameadd;
         $('.mydatatable').DataTable();
     </script>
 
-    <script type="text/javascript" src="viewmodal.js"></script>
+
 
 
 </body>
