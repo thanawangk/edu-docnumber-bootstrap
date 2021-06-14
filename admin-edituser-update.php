@@ -44,8 +44,8 @@
     {
         $radi = $_POST['radio2'];
     }
+    #$selecttypeuse = "select permission.TypeUseID,type.current_year from permission INNER JOIN type ON permission.TypeUseID=type.TypeID where UserID = 20 and type.current_year ='$year'";
 
-    #print_r($radi);
     $countloop = 1;
     if($radi == 'admin'){
         while($countloop < $nameadd){
@@ -66,7 +66,7 @@
 
     $cleanuser = "delete from permission where UserID = '".$userid."'";
     if ($reql = $db->query($cleanuser)) {
-        echo "Record clea successfully<br>";
+        #echo "Record clea successfully<br>";
     }
 
     $ii = 1;
@@ -80,7 +80,7 @@
     $selectuser = "update user set Status = '$radi',Name = '$fullname',Surname ='$surname',Email='$email',Phone = '$phone' where UserID = '$userid'";
 
     if ($reql = $db->query($selectuser)) {
-        echo "Record updated successfully<br>";
+        #echo "Record updated successfully<br>";
     }
 
 

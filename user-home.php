@@ -146,6 +146,7 @@ session_start();
                                             </td>";
 
                                     $docids = $rowdoc["DocumentID"];
+                                    $filename = $rowdoc["Filee"];
                                     $selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docids'";
                                     $reql2 = $db->query($selectnumbook);
                                     $row2 = mysqli_fetch_array($reql2);
@@ -190,6 +191,7 @@ session_start();
                                             <!-- เลขเอกสาร +ต่อกัน -->
                                             <?php
                                             $docids = $rowdoc["DocumentID"];
+                                            $filename = $rowdoc["Filee"];
                                             $selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docids'";
                                             $reql2 = $db->query($selectnumbook);
                                             $row2 = mysqli_fetch_array($reql2);
@@ -223,9 +225,14 @@ session_start();
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
-                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='user-editdoc.php?docid= {$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
+                                                    echo "<a class='btn btn-secondary waves-effect edit-doc' href='user-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='user-doc-cancel.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='user-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    if($filename != null)
+                                                    {
+                                                        echo "<a href='uploads/readpdf.php?filename={$filename}' class='btn btn-success' ms-2 >แสดงไฟล์ PDF</a>";
+                                         
+                                                    }
                                                 }
                                                 ?>
                                             </div>
@@ -295,15 +302,6 @@ session_start();
                     <div class="form-outline">
                         <label for="text">เรื่อง</label>
                         <textarea type="text" class="form-control" name="text" id="text" rows="3" readonly></textarea>
-                    </div>
-
-                    <div class="col-md-8 pt-3">
-
-                        <label for="address2" class="form-label">ไฟล์ <span class="text-muted">(Optional)</span></label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                        </div>
                     </div>
 
                 </div>

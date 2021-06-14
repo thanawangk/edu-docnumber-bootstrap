@@ -10,6 +10,7 @@ $(document).ready(function () {
         var resvname = $(this).attr('data-resvname');
         var text = $(this).attr('data-text');
         var status = $(this).attr('data-status');
+        var filename = $(this).attr('filename');
 
         // set value to modal
         $('#id').val(id);
@@ -18,6 +19,8 @@ $(document).ready(function () {
         $('#sentname').val(sentname);
         $('#resvname').val(resvname);
         $('#text').val(text);
+        $('#filename').val(filename);
+        
         if (status == 0) {
             document.getElementById('status').innerHTML = "<span style='color: red;'>ยกเลิก</span>";
         }

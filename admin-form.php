@@ -241,8 +241,7 @@ $_SESSION['nameadd'] = $nameadd;
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
-
-                                <a href="admin-form.php" class="btn btn-danger ms-2">ยกเลิก</a>
+                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>

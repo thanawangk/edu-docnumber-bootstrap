@@ -168,11 +168,15 @@ session_start();
                             <?php
                             #select Book
                             $namearr = array('');
-                            $selectuser = "select Name from type";
+                            $yeararr = array('');
+                            $typearr = array('');
+                            $selectuser = "select * from type";
                             $reql = $db->query($selectuser);
 
                             while ($row = mysqli_fetch_array($reql)) {
                                 array_push($namearr, $row['Name']);
+                                array_push($typearr, $row['TypeID']);
+                                array_push($yeararr, $row['current_year']);    
                             }
 
                             $nameadd = count($namearr);
@@ -183,14 +187,10 @@ session_start();
 
                             $start = 1;
                             while ($start < $nameadd) {
-                                $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
-                                $reql2 = $db->query($selectbook);
-                                $rowbook = $reql2->fetch_assoc();
-                                $typebookid = $rowbook["TypeID"];
                             ?>
-                                <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>">
+                                <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $start?>">
                                 <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                <?php echo $namearr[$start] . "<br>   "; ?>
+                                <?php echo $namearr[$start] ."  ". $yeararr[$start]."<br>   ";?>
 
                             <?php
                                 $start += 1;

@@ -174,7 +174,7 @@ session_start();
                                             </td>";
 
                                     echo "  <td>
-                                                <a href='#' class='btn btn-outline-info waves-effect view-detail' data-id='{$rowdoc["Date"]}'  data-num='อว.6503$typenum/{$rowdoc["resultNumber"]} ' data-sentname=' {$rowdoc["Sent_Name"]}' data-resvname='{$rowdoc["Receive_Name"]}' data-text='{$rowdoc["Text"]}' data-status='{$rowdoc["Status"]}'><i class='fas fa-search'></i>
+                                                <a href='#' class='btn btn-outline-info waves-effect view-detail'data-id='{$rowdoc["Date"]}' data-num='อว.6503$typenum/{$rowdoc["resultNumber"]} ' data-sentname=' {$rowdoc["Sent_Name"]}' data-resvname='{$rowdoc["Receive_Name"]}' data-text='{$rowdoc["Text"]}' data-status='{$rowdoc["Status"]}'><i class='fas fa-search'></i>
                                                 </a>
                                             </td>
                                         </tr>";
@@ -192,6 +192,8 @@ session_start();
                                         <td>
                                             <!-- เลขเอกสาร +ต่อกัน -->
                                             <?php
+                                            $filename = $rowdoc["Filee"];
+                                            print_r($filename);
                                             $docids = $rowdoc["DocumentID"];
                                             $selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docids'";
                                             $reql2 = $db->query($selectnumbook);
@@ -221,14 +223,21 @@ session_start();
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
-                                                <a href="#" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                <a href="#" class="btn btn-info waves-effect view-detail" filename="<?php echo $filename; ?>" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($rowdoc["Status"] == 1) {
                                                     echo "<a class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>";
 
-                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid= {$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    echo "<a class='btn btn-danger waves-effect ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                    
+                                                    if($filename != null)
+                                                    {
+                                                        
+                                                        echo "<a href='uploads/readpdf.php?filename={$filename}' class='btn btn-success' ms-2 >แสดงไฟล์ PDF</a>";
+                                         
+                                                    }
                                                 }
                                                 ?>
                                             </div>
@@ -304,15 +313,6 @@ session_start();
                         <textarea type="text" class="form-control" name="text" id="text" rows="3" readonly></textarea>
                     </div>
 
-                    <div class="col-md-8 pt-3">
-
-                        <label for="address2" class="form-label">ไฟล์ <span class="text-muted">(Optional)</span></label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
 
@@ -323,7 +323,7 @@ session_start();
 
 
     <!-- สคริป -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="/myqnumber/lib/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
 

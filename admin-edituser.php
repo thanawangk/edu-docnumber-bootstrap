@@ -1,10 +1,12 @@
 <?php
 require("dbConn.php");
 session_start();
+date_default_timezone_set("Asia/Bangkok");
 
 $staruserid = $_GET["userid"];
 $_SESSION["userid"] = $staruserid;
 $nameadd = $_SESSION['nameadd'];
+$year = (date("Y") + 543);
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
 //     exit;
@@ -139,13 +141,14 @@ $nameadd = $_SESSION['nameadd'];
                             $phone = $rowuser["Phone"];
                             $status_user = $rowuser["Status"];
 
-                            $selecttypeuse = "select TypeUseID from permission where UserID = $staruserid";
+                            $selecttypeuse = "select TypeUseID from permission where UserID = $staruserid ";
                             $reqltype = $db->query($selecttypeuse);
 
                             $listusetype = array('');
                             while ($rowtypeuse = $reqltype->fetch_assoc()) {
                                 array_push($listusetype, $rowtypeuse['TypeUseID']);
                             }
+                            
 
                             ?>
 
@@ -222,35 +225,41 @@ $nameadd = $_SESSION['nameadd'];
                         $selectuser = "select * from user where UserID = '" . $userid . "'";
                         $reql = $db->query($selectuser);
                         $rowuser = $reql->fetch_assoc();
-
+                        $rowstatus = $rowuser['Status'];
+                        
+                        if($rowstatus == 'admin')
+                        {
+                            echo '<div class="form-check" id="form-check" style="display:none">';
+                  
+                        }else{
+                            echo '<div class="form-check" id="form-check">';
+                        }
                         ?>
-
-                        <div class="form-check" id="form-check">
                             <?php
                             $namearr = array('');
-                            $selectuser = "select Name from type";
+                            $yeararr = array('');
+                            $typearr = array('');
+                            $selectuser = "select * from type";
                             $reql = $db->query($selectuser);
 
                             while ($row = mysqli_fetch_array($reql)) {
                                 array_push($namearr, $row['Name']);
+                                array_push($typearr, $row['TypeID']);
+                                array_push($yeararr, $row['current_year']);
                             }
-
+                            $nameadd = count($namearr);
+                            $checkbook = 1;
                             $start = 1;
                             while ($start < $nameadd) {
-                                $selectbook = "select TypeID from type where Name = '$namearr[$start]'";
-                                $reql2 = $db->query($selectbook);
-                                $rowbook = $reql2->fetch_assoc();
-                                $typebookid = $rowbook["TypeID"];
-
-                                if (in_array($typebookid, $listusetype)) { ?>
-                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>" checked="checked">
+                                if (in_array($typearr[$start], $listusetype)) { ?>
+                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $start ?>" checked="checked">
                                     <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                <?php echo $namearr[$start] . "<br>   ";
+                                <?php echo $namearr[$start]." ".$yeararr[$start]."<br>   ";
                                 } else {
                                 ?>
-                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $typebookid ?>">
+                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $start ?>">
                                     <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                            <?php echo $namearr[$start] . "<br>   ";
+                            <?php echo $namearr[$start]." ".$yeararr[$start]."<br>   ";
                                 }
                                 $start += 1;
                             }
