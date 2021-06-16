@@ -178,7 +178,7 @@ session_start();
 
                                     echo "  <td>
                                                 <a href='#' title='ดูรายละเอียด' class='btn btn-outline-info waves-effect view-detail'data-id='{$rowdoc["Date"]}' data-num='อว.6503$typenum/{$rowdoc["resultNumber"]} ' data-sentname=' {$rowdoc["Sent_Name"]}' data-resvname='{$rowdoc["Receive_Name"]}' data-text='{$rowdoc["Text"]}' data-status='{$rowdoc["Status"]}'><i class='fas fa-search'></i></a>
-                                                
+
                                                 <a title='ใช้งานเอกสาร' class='btn btn-outline-success waves-effect activate-doc ' href='admin-doc-activate.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการใช้งานเอกสารใช่หรือไม่?')\"><i class='fas fa-check'></i></a>
                                             </td>
                                         </tr>";
@@ -227,22 +227,26 @@ session_start();
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
-                                                <a href="#" title='ดูรายละเอียด' class="btn btn-info waves-effect view-detail" filename="<?php echo $filename; ?>" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                <a href="#" title='ดูรายละเอียด' class="btn btn-info waves-effect view-detail" data-fname="<?php echo $filename; ?>" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
-                                                if ($filename != null) {
+                                                if ($filename == null) {
 
+                                                    echo "<a title='ไม่มีไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success disabled ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
+                                                } else {
                                                     echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
                                                 }
-                                                
-                                                    echo "<a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a></div>";
 
-                                                    echo "<a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                echo "<a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a></div>";
 
-                                                
+                                                echo "<a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+
+
+
+
                                                 ?>
-                                            
+
                                         </td>
                                     </tr>
                             <?php }
@@ -314,10 +318,11 @@ session_start();
                         <label for="text">เรื่อง</label>
                         <textarea type="text" class="form-control" name="text" id="text" rows="3" readonly></textarea>
                     </div>
+                    <br>
 
                 </div>
                 <div class="modal-footer">
-
+                    <p class="fw-light text-danger">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
                 </div>
             </div>
         </div>
@@ -334,7 +339,7 @@ session_start();
     <script>
         $('.mydatatable').DataTable();
     </script>
-    <script type="text/javascript" src="viewmodal1.js"></script>
+    <script type="text/javascript" src="viewmodal.js"></script>
 
 </body>
 

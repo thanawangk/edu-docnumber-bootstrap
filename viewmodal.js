@@ -10,7 +10,7 @@ $(document).ready(function () {
         var resvname = $(this).attr('data-resvname');
         var text = $(this).attr('data-text');
         var status = $(this).attr('data-status');
-        var filename = $(this).attr('filename');
+        var fname = $(this).attr('data-fname');
 
         // set value to modal
         $('#id').val(id);
@@ -19,7 +19,7 @@ $(document).ready(function () {
         $('#sentname').val(sentname);
         $('#resvname').val(resvname);
         $('#text').val(text);
-        $('#filename').val(filename);
+        $('#fname').val(fname);
         
         if (status == 0) {
             document.getElementById('status').innerHTML = "<span style='color: red;'>ยกเลิก</span>";
@@ -27,7 +27,7 @@ $(document).ready(function () {
         else {
             document.getElementById('status').innerHTML = "<span style='color: green;'>ใช้งาน</span>";
         }
-        //$('#status').val(status);
+     
 
         // open modal
         $('#view-detailModal').modal('show');

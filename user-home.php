@@ -225,22 +225,25 @@ session_start();
                                                 <!-- ปุ่ม view -->
                                                 <a href="#" title="ดูรายระเอียด" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
-                                                
+
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
-                                                if ($filename != null) {
+                                                if ($filename == null) {
+                                                    echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success disabled ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
+                                                }
+                                                else{
                                                     echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
                                                 }
-                                                
-                                                    echo "<a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='user-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>
+
+                                                echo "<a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='user-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a>
                                                     </div>";
 
-                                                    echo "<a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='user-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
-                                                    
-                                                
+                                                echo "<a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='user-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+
+
                                                 ?>
-                                            
-                                            
+
+
                                         </td>
                                     </tr>
                             <?php }
@@ -311,7 +314,7 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-
+                    <p class="fw-light text-danger">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
                 </div>
             </div>
         </div>
@@ -328,7 +331,7 @@ session_start();
     <script>
         $('.mydatatable').DataTable();
     </script>
-    <script type="text/javascript" src="viewmodal1.js"></script>
+    <script type="text/javascript" src="viewmodal.js"></script>
 
 </body>
 
