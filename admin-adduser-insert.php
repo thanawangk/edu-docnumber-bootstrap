@@ -1,11 +1,10 @@
 <?php
-include "dbConn.php"; // Using database connection file here
+include "dbConn.php"; 
 session_start();
 
 $addnum = $_SESSION['nameadd'];
 if(isset($_POST['submit']))
 {	
-    print_r($_SESSION);
     $fullname = $_POST['fname'];
     $lastname = $_POST['lname'];
     $email = $_POST['ename'];
@@ -21,7 +20,7 @@ if(isset($_POST['submit']))
         $ral1 = $_POST['radio2'];
     }
 
-    print_r($ral1);
+
     $countloop = 1;
     $newword = array('');
     if($ral1 == 'admin'){

@@ -2,7 +2,7 @@
 include "dbConn.php"; // Using database connection file here
 session_start();
 date_default_timezone_set("Asia/Bangkok");
-#print_r($_SESSION);
+
 $nameadd = $_SESSION['nameadd'];
 if(isset($_POST['submit']))
 {
@@ -13,7 +13,6 @@ if(isset($_POST['submit']))
         $namepdf = $_FILES["fileUpload"]["name"];
     }    
 
-    #print_r($typefile);
     if(isset($_POST['type_id']))
     {
         $dropdown = $_POST['type_id'];
@@ -36,7 +35,7 @@ if(isset($_POST['submit']))
     $reql = $db->query($selecttype);
     $rowtype = $reql->fetch_assoc();
     $resultNumber = $rowtype['current_number'] + 1;
-    $checky = date('Y')+543; #เช็คปี -----------
+    $checky = date('Y')+543; 
 
 
     if($_FILES['fileUpload']['size'] != 0 and $typefile == 'application/pdf')
@@ -76,10 +75,7 @@ if(isset($_POST['submit']))
     }
 
 
-
-
-
-mysqli_close($db); // Close connection
+mysqli_close($db); 
 header("location: admin-home.php");
 }
 ?>

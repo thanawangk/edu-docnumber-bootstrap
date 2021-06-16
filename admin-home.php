@@ -193,7 +193,6 @@ session_start();
                                             <!-- เลขเอกสาร +ต่อกัน -->
                                             <?php
                                             $filename = $rowdoc["Filee"];
-                                            print_r($filename);
                                             $docids = $rowdoc["DocumentID"];
                                             $selectnumbook = "select document.TypeID,type.TypeID,type.TypeNumber from type JOIN document ON type.TypeID = document.TypeID WHERE document.DocumentID = '$docids'";
                                             $reql2 = $db->query($selectnumbook);

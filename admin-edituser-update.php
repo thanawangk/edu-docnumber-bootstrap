@@ -44,7 +44,6 @@
     {
         $radi = $_POST['radio2'];
     }
-    #$selecttypeuse = "select permission.TypeUseID,type.current_year from permission INNER JOIN type ON permission.TypeUseID=type.TypeID where UserID = 20 and type.current_year ='$year'";
 
     $countloop = 1;
     if($radi == 'admin'){
