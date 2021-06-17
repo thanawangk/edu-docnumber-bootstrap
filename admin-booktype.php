@@ -123,6 +123,7 @@ session_start();
                                 <th>ชื่อ</th>
                                 <th>เลขปัจจุบัน</th>
                                 <th>ปีปัจจุบัน</th>
+                                <th>สถานะ</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -134,27 +135,60 @@ session_start();
                             $reql = $db->query($selectbook);
                             while ($rowbook = $reql->fetch_assoc()) {
                             ?>
-                                <tr>
-                                    <td><?php echo $rowbook["TypeNumber"]; ?></td>
-                                    <td><?php echo $rowbook["Name"]; ?></td>
-                                    <td><?php echo $rowbook["current_number"]; ?></td>
-                                    <td><?php echo $rowbook["current_year"]; ?></td>
 
-                                    <td>
-                                        <?php
-                                        if ($rowbook["current_number"] == 0) {
-                                            echo "<div class='btn-group' role='group' aria-label='Second group'>
-                                            <a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"far fa-edit\"></i></a>
-                                            <a class='btn btn-danger waves-effect  cancel-doc ' href='delete-book-delete.php?typeid= {$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')\"><i class=\"fas fa-minus\"></i></a>
-                                            </div>";
-                                        } else {
-                                            echo "<a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid= {$rowbook["TypeID"]}'><i class=\"fas fa-edit\"></i></a>";
-                                        }
-                                        ?>
+                                <?php
+                                if ($rowbook["Status"] == 0) {
 
-                                    </td>
-                                </tr>
-                            <?php } ?>
+
+                                    echo "<tr>
+                                            <td>
+                                                <p class='text-danger'><del>{$rowbook["TypeNumber"]}</del>
+                                            </td>";
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowbook["Name"]}</del>
+                                            </td>";
+
+
+
+
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowbook["current_number"]}</del>
+                                            </td>";
+
+                                    echo "  <td>
+                                                <p class='text-danger'><del>{$rowbook["current_year"]}</del>
+                                            </td>";
+
+
+                                    echo "  <td>
+                                                <p class='text-danger'>ไม่ใช้แล้ว</p>
+                                            </td>";
+
+
+                                    echo "<td>
+                                            <a title='ใช้งานประเภทเอกสาร' class='btn btn-outline-success waves-effect activate-doc ' href='activate-book-update.php?typeid={$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการใช้งานประเภทเอกสารใช่หรือไม่?')\"><i class='fas fa-check'></i></a>
+                                            </td>
+                                            </tr>";
+                                } else {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $rowbook["TypeNumber"]; ?></td>
+                                        <td><?php echo $rowbook["Name"]; ?></td>
+                                        <td><?php echo $rowbook["current_number"]; ?></td>
+                                        <td><?php echo $rowbook["current_year"]; ?></td>
+                                        <td><?php echo "<p class='text-success'>ใช้งาน</p>"; ?></td>
+                                        <td>
+                                            <a class='btn btn-secondary waves-effect edit-book' href='admin-editbook.php?typeid=<?php echo $rowbook["TypeID"]; ?>'><i class="fas fa-edit"></i></a>
+
+                                            <a class='btn btn-danger waves-effect ps-3 pe-3 cancel-book ' href='cancel-book-update.php?typeid= <?php echo $rowbook["TypeID"]; ?>' onclick="return confirm('คุณต้องการลบประเภทหนังสือนี้ใช่หรือไม่?')"><i class="fas fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
+
+
                         </tbody>
 
                         <tfoot>
@@ -163,6 +197,7 @@ session_start();
                                 <th>ชื่อ</th>
                                 <th>เลขปัจจุบัน</th>
                                 <th>ปีปัจจุบัน</th>
+                                <th>สถานะ</th>
                                 <th></th>
                             </tr>
                         </tfoot>

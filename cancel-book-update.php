@@ -5,13 +5,16 @@ if($_SESSION["AD_userid"]=="" || $_SESSION["AD_name"]=="" || $_SESSION["AD_email
   header("location: login.php");  
 }else{
     $typeid = $_GET["typeid"];
-
+    
     if($typeid!=""){
-        $deletesql = "delete from type where TypeID = '".$typeid."'";
+        $cancelsql = "update type set 
+        Status = '0'
+        where TypeID = '".$typeid."'
+        ";
         
-        if($db->query($deletesql)==TRUE){
+        if($db->query($cancelsql)==TRUE){
             echo "<script>";
-            echo "alert('ลบประเภทหนังสือแล้ว');"; 
+            echo "alert('ยกเลิกการใช้งานประเภทเอกสารแล้ว');"; 
             echo "window.location.href = 'admin-booktype.php';";
             echo "</script>"; 
         }else{
