@@ -56,11 +56,11 @@ $typenum = $row['TypeNumber'];
 
     <style>
         body {
-           
-           background: linear-gradient(to right,
-           #12343b,#2d545e, #9DC88D);
-           font-family: 'Sarabun', sans-serif;
-       }
+
+            background: linear-gradient(to right,
+                    #12343b, #2d545e, #9DC88D);
+            font-family: 'Sarabun', sans-serif;
+        }
     </style>
 
 </head>
@@ -110,9 +110,9 @@ $typenum = $row['TypeNumber'];
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 ">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -141,7 +141,7 @@ $typenum = $row['TypeNumber'];
 
                     <!-- ฟอร์ม -->
 
-                    <form class="needs-validation" action="user-editdoc-update.php?docid=<?php echo $docid;?>" method="POST" enctype="multipart/form-data">
+                    <form class="needs-validation" action="user-editdoc-update.php?docid=<?php echo $docid; ?>" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
 
                             <div class="container">
@@ -150,7 +150,7 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">เลขเอกสาร</label>
-                                <input type="text" class="form-control" id="zip" value="อว.6503/<?php echo $typenum ;?>/<?php echo $resultnum;?>" readonly>
+                                <input type="text" class="form-control" id="zip" value="อว.6503/<?php echo $typenum; ?>/<?php echo $resultnum; ?>" readonly>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -159,17 +159,17 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ลงวันที่</label>
                                 <div class="input-group has-validation">
-                                <?php
-                                    $selectdoc = "select * from document where DocumentID = '".$docid."'";
+                                    <?php
+                                    $selectdoc = "select * from document where DocumentID = '" . $docid . "'";
                                     $reql = $db->query($selectdoc);
                                     $rowdoc = $reql->fetch_assoc();
                                     $print_date = $rowdoc["Date"];
-                                    $print_sentname= $rowdoc["Sent_Name"];
+                                    $print_sentname = $rowdoc["Sent_Name"];
                                     $print_rename = $rowdoc["Receive_Name"];
                                     $print_text = $rowdoc["Text"];
 
                                     echo "<input type='text' class='form-control' id='zip' name='date' value='$print_date' required readonly>";
-                                ?>
+                                    ?>
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -179,7 +179,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="firstName" class="form-label">ชื่อผู้ส่ง</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="send" id="firstName" value="<?php echo $print_sentname ?>" >
+                                    <input type="text" class="form-control" name="send" id="firstName" value="<?php echo $print_sentname ?>">
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
                                         Your username is required.
@@ -190,7 +190,7 @@ $typenum = $row['TypeNumber'];
                             <div class="col-lg-12">
                                 <label for="lastName" class="form-label">ชื่อผู้รับ</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="to" id="lastName" value="<?php echo $print_rename ?>" >
+                                    <input type="text" class="form-control" name="to" id="lastName" value="<?php echo $print_rename ?>">
                                     <div class="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -200,7 +200,7 @@ $typenum = $row['TypeNumber'];
 
                             <div class="col-lg-12">
                                 <label for="address" class="form-label">เรื่อง</label>
-                                <textarea type="text" class="form-control" name="story" id="address"  ><?php echo $print_text ?></textarea>
+                                <textarea type="text" class="form-control" name="story" id="address"><?php echo $print_text ?></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>

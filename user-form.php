@@ -83,9 +83,9 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 "  >
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -119,13 +119,16 @@ session_start();
                     <?php
                     $user_id = $_SESSION['USE_userid'];
                     $date_y = (date("Y") + 543);
-                   
-                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
+
+                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year,type.Status FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
                     $reqltype = $db->query($selecttypeuse);
 
                     $listusetype = array('');
                     while ($rowtypeuse = $reqltype->fetch_assoc()) {
-                        array_push($listusetype, $rowtypeuse['TypeUseID']);
+                        if($rowtypeuse['Status'] == '1')
+                        {
+                            array_push($listusetype, $rowtypeuse['TypeUseID']);
+                        }
                     }
                     $countlist = count($listusetype);
                     ?>

@@ -32,7 +32,7 @@ $email = $_SESSION['user_email_address'];
             $_SESSION["USE_email"] = $row["Email"];
             $_SESSION['USE_status'] = $row["Status"];
             echo "<script>";
-            echo "alert('ยินดีต้อนรับผู้ใช้ คุณ $name');";
+            echo "alert('ยินดีต้อนรับผู้ใช้คุณ $name');";
             echo "window.location.href = 'user-home.php';";
             echo "</script>"; 
         }else{
@@ -41,7 +41,7 @@ $email = $_SESSION['user_email_address'];
             $_SESSION["AD_email"] = $row["Email"];
             $_SESSION['AD_status'] = $row["Status"];
             echo "<script>";
-            echo "alert('ยินดีต้อนรับแอดมิน คุณ $name');"; 
+            echo "alert('ยินดีต้อนรับแอดมินคุณ $name');"; 
             echo "window.location.href = 'admin-home.php';"; 
             echo "</script>"; 
         }

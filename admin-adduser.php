@@ -83,9 +83,9 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 "  >
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -170,7 +170,7 @@ session_start();
                             $namearr = array('');
                             $yeararr = array('');
                             $typearr = array('');
-                            $selectuser = "select * from type";
+                            $selectuser = "select * from type where Status = 1";
                             $reql = $db->query($selectuser);
 
                             while ($row = mysqli_fetch_array($reql)) {
@@ -188,7 +188,7 @@ session_start();
                             $start = 1;
                             while ($start < $nameadd) {
                             ?>
-                                <input class="form-check-input" type="checkbox" id="chk<?php echo $start; ?>" name="chk<?php echo $start; ?>" value="<?php echo $start?>">
+                                <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start];?>">
                                 <label class="form-check-label ps-1" for="flexCheckDefault"></label>
                                 <?php echo $namearr[$start] ."  ". $yeararr[$start]."<br>   ";?>
 

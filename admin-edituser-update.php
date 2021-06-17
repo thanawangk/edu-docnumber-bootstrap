@@ -3,7 +3,6 @@
     session_start();
     $starindex = 2;
     $chkid = 1;
-    $nameadd = $_SESSION['nameadd'];
     $userid = $_SESSION["userid"];
     $newword = array('');
     $ii = 1;
@@ -45,21 +44,34 @@
         $radi = $_POST['radio2'];
     }
 
+    if(!isset($radi))
+    {
+        $radi = 'admin';
+    }
+
     $countloop = 1;
     if($radi == 'admin'){
+        $selecttype = "select * from type";
+        $reql = $db->query($selecttype);
+        $nameadd = $reql->num_rows+1;
         while($countloop < $nameadd){
             array_push($newword,$countloop);
             $countloop += 1;
         }  
-    }else
-    while($ii < $nameadd)
-    {
-        if(isset($_POST['chk'.$chkid])){
-            $ina = $_POST['chk'.$chkid];
-            array_push($newword,$ina);
+    }
+    else{
+        $selecttype = "select * from type";
+        $reql = $db->query($selecttype);
+        $nameadd = $reql->num_rows+1;
+        while($ii < $nameadd)
+        {
+            if(isset($_POST['chk'.$chkid])){
+                $ina = $_POST['chk'.$chkid];
+                array_push($newword,$ina);
+            }
+            $ii += 1;
+            $chkid += 1;
         }
-        $ii += 1;
-        $chkid += 1;
     }
     $cnew = count($newword);
 

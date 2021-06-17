@@ -1,8 +1,10 @@
 <?php
 include "dbConn.php"; 
 session_start();
+$selecttype = "select * from type";
+$reql = $db->query($selecttype);
+$addnum = $reql->num_rows+1;
 
-$addnum = $_SESSION['nameadd'];
 if(isset($_POST['submit']))
 {	
     $fullname = $_POST['fname'];
@@ -20,6 +22,10 @@ if(isset($_POST['submit']))
         $ral1 = $_POST['radio2'];
     }
 
+    if(!isset($ral1))
+    {
+        $ral1 = 'admin';
+    }
 
     $countloop = 1;
     $newword = array('');

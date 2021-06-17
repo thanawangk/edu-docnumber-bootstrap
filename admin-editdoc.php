@@ -111,9 +111,9 @@ $typenum = $row['TypeNumber'];
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 "  >
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 

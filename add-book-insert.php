@@ -8,7 +8,7 @@ if(isset($_POST['submit']))
     $startnum = $_POST['startnum'];
     $year = $_POST['year'];
 
-    $insert = mysqli_query($db,"INSERT INTO `type`(`TypeNumber`,`Name`,`current_number`,`current_year`) VALUES ('$number','$fullname','$startnum','$year')");
+    $insert = mysqli_query($db,"INSERT INTO `type`(`TypeNumber`,`Name`,`current_number`,`current_year`,`Status`) VALUES ('".".$number','$fullname','$startnum','$year','1')");
 
     if(!$insert)
     {

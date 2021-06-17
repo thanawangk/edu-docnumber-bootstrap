@@ -84,12 +84,12 @@ $date_y = (date("Y") + 543);
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 "  >
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
-
+        
         <!-- แถบเมนู -->
         <div class="container col-lg-8 alert-secondary">
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
@@ -142,7 +142,7 @@ $date_y = (date("Y") + 543);
                             <div class="container mb-3">
                                 <div class="col-lg-12">
                                     <label for="year">ปีปัจจุบัน :</label>
-                                    <input type="text" class="form-control mt-1" id="year" name="year" placeholder="โปรดใส่ปี พ.ศ. ปัจจุบัน" required>
+                                    <input type="text" class="form-control mt-1" id="year" name="year" placeholder="โปรดใส่เลขปี พ.ศ. ปัจจุบัน" required>
                                     <!-- <input type="text" class="form-control" id="year" name="year" placeholder="โปรดใส่ปี พ.ศ. ปัจจุบัน <?php echo $date_y ?>" value="" required> -->
                                 </div>
                             </div>

@@ -90,9 +90,9 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 ">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -272,8 +272,6 @@ session_start();
         </div>
 
 
-
-
         <!-- จบ Section -->
     </section>
 
@@ -283,8 +281,8 @@ session_start();
     <div class="modal fade" id="view-detailModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title ">รายละเอียด</h3>
+                <div class="modal-header" style="background-color:#4D774E;">
+                    <h3 class="modal-title text-white">รายละเอียด</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -322,7 +320,7 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <p class="fw-light text-danger">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
+                    <p class="fs-8 fw-light text-muted">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
                 </div>
             </div>
         </div>
@@ -337,7 +335,11 @@ session_start();
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
-        $('.mydatatable').DataTable();
+        $('.mydatatable').DataTable({
+            "order": [
+                [0, "desc"]
+            ]
+        });
     </script>
     <script type="text/javascript" src="viewmodal.js"></script>
 

@@ -34,10 +34,11 @@ session_start();
             font-family: 'Sarabun', sans-serif;
         }
 
-        /* body {
-            background-color: #08e1ae;
-            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
-        } */
+        .mydatatable tbody tr td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 
 </head>
@@ -85,13 +86,11 @@ session_start();
             </div>
         </header>
 
-        <div class="container col-lg-8 bg-light p-3">
-
-            <!-- ล่างหัวบน -->
+        <!-- ล่างหัวบน -->
+        <div class="container col-lg-8 p-3 border border-white border-3 ">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
-
         </div>
 
         <!-- แถบเมนู -->
@@ -115,13 +114,9 @@ session_start();
 
         <div class="container col-lg-8 mb-3 bg-light p-3">
 
-
-
-
             <div class="mb-3 d-flex justify-content-end">
                 <a class="add_booktype_user p-2" href="admin-adduser.php" role="button">เพิ่มสมาชิก</a>
             </div>
-
 
             <!-- ตาราง -->
             <div class="col">
@@ -155,8 +150,8 @@ session_start();
                                     <td><?php echo $rowuser["Status"]; ?></td>
                                     <td>
                                         <div class='btn-group' role='group' aria-label='Second group'>
-                                            <a class="btn btn-secondary waves-effect edit" href="admin-edituser.php?userid=<?php echo $rowuser["UserID"]; ?>"><i class="fas fa-user-edit"></i></a>
-                                            <a class="btn btn-danger waves-effect delete " href="admin-delectuser.php?userid=<?php echo $rowuser["UserID"]; ?>" onclick="return confirm('คุณต้องการที่จะลบข้อมูลผู้ใช้นี้หรือไม่?');"><i class="fas fa-user-minus"></i></a>
+                                            <a title='แก้ไขข้อมูลผู้ใช้' class="btn btn-secondary waves-effect edit" href="admin-edituser.php?userid=<?php echo $rowuser["UserID"]; ?>"><i class="fas fa-user-edit"></i></a>
+                                            <a title='ลบข้อมูลผู้ใช้' class="btn btn-danger waves-effect delete " href="admin-delectuser.php?userid=<?php echo $rowuser["UserID"]; ?>" onclick="return confirm('คุณต้องการที่จะลบข้อมูลผู้ใช้นี้หรือไม่?');"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

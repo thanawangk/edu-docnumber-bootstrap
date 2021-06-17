@@ -3,7 +3,7 @@ require("dbConn.php");
 session_start();
 
 $namearr = array('');
-$selectuser = "select Name from type";
+$selectuser = "select Name from type where Status = 1";
 $reql = $db->query($selectuser);
 
 while ($row = mysqli_fetch_array($reql)) {
@@ -93,9 +93,9 @@ $_SESSION['nameadd'] = $nameadd;
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 "  >
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -130,16 +130,18 @@ $_SESSION['nameadd'] = $nameadd;
                     <?php
                     $user_id = $_SESSION['AD_userid'];
                     $date_y = (date("Y") + 543);
-                    /*SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission 
-                        INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = 'ปีปัจจุบัน'*/
-                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
+                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year,type.Status FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
                     $reqltype = $db->query($selecttypeuse);
 
                     $listusetype = array('');
                     while ($rowtypeuse = $reqltype->fetch_assoc()) {
-                        array_push($listusetype, $rowtypeuse['TypeUseID']);
+                        if($rowtypeuse['Status'] == '1')
+                        {
+                            array_push($listusetype, $rowtypeuse['TypeUseID']);
+                        }
                     }
                     $countlist = count($listusetype);
+
                     ?>
 
                     <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
@@ -161,9 +163,12 @@ $_SESSION['nameadd'] = $nameadd;
                                         $reql = $db->query($selecttype);
                                         $rowtype = $reql->fetch_assoc();
                                         $namebook = $rowtype['Name'];
-                                    ?>
+                                        $statusbook = $rowtype['Status'];
+                                        if($statusbook = '1'){
+                                    ?>      
                                         <option name="drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
                                     <?php
+                                    }
                                         $loop += 1;
                                     } ?>
                                 </select>

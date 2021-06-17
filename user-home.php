@@ -33,6 +33,12 @@ session_start();
                     #12343b, #2d545e, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
+
+        .mydatatable tbody tr td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 
 </head>
@@ -82,9 +88,9 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 bg-light p-3">
+        <div class="container col-lg-8 p-3 border border-white border-3 ">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">KASETSART UNIVERSITY </h1>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -129,8 +135,6 @@ session_start();
                             <?php
 
                             $username = $_SESSION["USE_name"] . ' ' . $_SESSION["USE_surname"];
-
-                            //$selectdoc = "select * from document where Sent_Name = '".$_SESSION["USE_name"]."' ";
                             $selectdoc = "select * from document where Sent_Name = '$username' ";
                             $reql = $db->query($selectdoc);
                             while ($rowdoc = $reql->fetch_assoc()) {
@@ -223,15 +227,14 @@ session_start();
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Second group">
                                                 <!-- ปุ่ม view -->
-                                                <a href="#" title="ดูรายระเอียด" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                <a href="#" title="ดูรายละเอียด" class="btn btn-info waves-effect view-detail" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
                                                 </a>
 
                                                 <!-- ปุ่ม edit,cancel -->
                                                 <?php
                                                 if ($filename == null) {
                                                     echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success disabled ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
-                                                }
-                                                else{
+                                                } else {
                                                     echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
                                                 }
 
@@ -276,8 +279,8 @@ session_start();
     <div class="modal fade" id="view-detailModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title ">รายละเอียด</h3>
+                <div class="modal-header" style="background-color:#2d545e;">
+                    <h3 class="modal-title text-white">รายละเอียด</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -311,10 +314,10 @@ session_start();
                         <label for="text">เรื่อง</label>
                         <textarea type="text" class="form-control" name="text" id="text" rows="3" readonly></textarea>
                     </div>
-
+                    <br>
                 </div>
                 <div class="modal-footer">
-                    <p class="fw-light text-danger">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
+                    <p class="fs-8 fw-light text-muted">* เอกสารที่ยกเลิกแล้วจะขอดูไฟล์ไม่ได้</p>
                 </div>
             </div>
         </div>
@@ -329,7 +332,11 @@ session_start();
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
-        $('.mydatatable').DataTable();
+        $('.mydatatable').DataTable({
+            "order": [
+                [0, "desc"]
+            ]
+        });
     </script>
     <script type="text/javascript" src="viewmodal.js"></script>
 
