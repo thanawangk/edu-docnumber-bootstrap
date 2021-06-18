@@ -161,7 +161,7 @@ session_start();
                                             </td>";
 
                                     echo "<td>
-                                            <a title='ใช้งานประเภทหนังสือ' class='btn btn-outline-success waves-effect activate-doc ' href='activate-book-update.php?typeid={$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการใช้งานประเภทเอกสารใช่หรือไม่?')\"><i class='fas fa-check'></i></a>
+                                            <a title='ใช้งานประเภทหนังสือ' class='btn btn-outline-success waves-effect activate-doc ' href='activate-book-update.php?typeid={$rowbook["TypeID"]}' onclick=\"return confirm('คุณต้องการใช้งานประเภทหนังสือใช่หรือไม่?')\"><i class='fas fa-check'></i></a>
                                             </td>
                                             </tr>";
                                 } else {

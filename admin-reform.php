@@ -2,6 +2,16 @@
 require("dbConn.php");
 session_start();
 
+$namearr = array('');
+$selectuser = "select Name from type";
+$reql = $db->query($selectuser);
+
+while ($row = mysqli_fetch_array($reql)) {
+    array_push($namearr, $row['Name']);
+}
+
+$nameadd = count($namearr);
+$_SESSION['nameadd'] = $nameadd;
 // if (!$_SESSION['login']) {
 //     header("location: /myqnumber/login.php");
 //     exit;
@@ -15,7 +25,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>กรอกย้อนหลัง</title>
+    <title>กรอกเอกสาร</title>
 
     <link rel="stylesheet" href="css/ss3.css">
     <link rel="stylesheet" href="/myqnumber/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css">
@@ -83,9 +93,9 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 p-3 border border-white border-3 "  >
+        <div class="container col-lg-8 p-3 border border-white border-3 ">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
@@ -134,7 +144,7 @@ session_start();
                     $countlist = count($listusetype);
                     ?>
 
-                    <form class="needs-validation" action="admin-reform-insert.php" method="POST" enctype="multipart/form-data">
+                    <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
 
                             <div class="container">
@@ -233,8 +243,7 @@ session_start();
                             <div class="d-flex col-12 justify-content-center">
 
                                 <button class="btn btn-success me-2" name="submit" type="submit">ตกลง</button>
-
-                                <a href="admin-reform.php" class="btn btn-danger ms-2">ยกเลิก</a>
+                                <a href="admin-home.php" class="btn btn-danger ms-2">ยกเลิก</a>
 
                             </div>
                         </div>
@@ -251,46 +260,9 @@ session_start();
             </div>
         </div>
 
-
-
         <!-- จบ Section -->
     </section>
 
-
-
-
-    <!-- ส่วน Modal -->
-    <div class="modal fade" id="view-detailModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">รายละเอียดเอกสาร</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
-
-                    <label for="num">เลขเอกสาร</label>
-                    <input type="text" name="num" id="num"><br>
-
-                    <label for="sentname">ชื่อผู้ส่ง</label>
-                    <input type="text" name="sentname" id="sentname"><br>
-
-                    <label for="resvname">ชื่อผู้รับ</label>
-                    <input type="text" name="resvname" id="resvname"><br>
-
-                    <label for="text">เรื่อง</label>
-                    <input type="text" name="text" id="text"><br>
-
-                    <label for="status">สถานะ</label>
-                    <input type="text" name="status" id="status"><br>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -305,7 +277,7 @@ session_start();
         $('.mydatatable').DataTable();
     </script>
 
-    <script type="text/javascript" src="viewmodal.js"></script>
+
 
 
 </body>
@@ -314,7 +286,7 @@ session_start();
 <!-- FOOTER -->
 <footer class="my-5 pt-4 container">
     <p class="float-end"><a class="FBtoT" href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. </p>
+    &copy; 2017–2021 Company, Inc. </>
 </footer>
 
 </html>

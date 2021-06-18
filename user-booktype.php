@@ -125,7 +125,7 @@ session_start();
                         <tbody>
 
                             <?php
-                            $selectbook = "select * from type JOIN permission ON type.TypeID = permission.TypeUseID wHERE permission.UserID = '{$_SESSION["USE_userid"]}'";
+                            $selectbook = "select * from type JOIN permission ON type.TypeID = permission.TypeUseID wHERE permission.UserID = '{$_SESSION["USE_userid"]}' AND type.Status = '1'     ";
 
                             $reql = $db->query($selectbook);
                             while ($rowbook = $reql->fetch_assoc()) {

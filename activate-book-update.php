@@ -14,7 +14,7 @@ if($_SESSION["AD_userid"]=="" || $_SESSION["AD_name"]=="" || $_SESSION["AD_email
         
         if($db->query($cancelsql)==TRUE){
             echo "<script>";
-            echo "alert('ใช้งานประเภทเอกสารแล้ว');"; 
+            echo "alert('ใช้งานประเภทหนังสือแล้ว');"; 
             echo "window.location.href = 'admin-booktype.php';";
             echo "</script>"; 
         }else{
