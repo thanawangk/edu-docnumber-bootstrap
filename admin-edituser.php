@@ -3,13 +3,14 @@ require("dbConn.php");
 session_start();
 date_default_timezone_set("Asia/Bangkok");
 
-$staruserid = $_GET["userid"];
-$_SESSION["userid"] = $staruserid;
-$year = (date("Y") + 543);
-// if (!$_SESSION['login']) {
-//     header("location: /myqnumber/login.php");
-//     exit;
-// }
+if (!$_SESSION['login']) {
+    header("location: /myqnumber/login.php");
+    exit;
+} else {
+    $staruserid = $_GET["userid"];
+    $_SESSION["userid"] = $staruserid;
+    $year = (date("Y") + 543);
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +28,14 @@ $year = (date("Y") + 543);
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
+    <link rel="shortcut icon" type="image/x-icon" href="img/ku-logo1.png" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 
     <style>
         body {
-            /* height: 768px; */
             background: linear-gradient(to right,
                     #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
@@ -51,8 +53,7 @@ $year = (date("Y") + 543);
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
-                    <span class="text-success">KU SRC</span>
+                    <span class="text-success fw-bold">KU </span><span class="fw-bold" style="color:OliveDrab;">SRC</span>
                 </a>
 
                 <div class="d-flex align-items-center justify-content-end">
@@ -87,14 +88,14 @@ $year = (date("Y") + 543);
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 p-3 border border-white border-3 "  >
+        <div class="container col-lg-9 p-3">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
         <!-- แถบเมนู -->
-        <div class="container col-lg-8 alert-secondary">
+        <div class="container col-lg-9 alert-secondary">
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -102,14 +103,16 @@ $year = (date("Y") + 543);
                         <li><a href="admin-form.php" class="nav-link px-2 link-dark">กรอกขอเลข</a></li>
                         <li><a href="admin-reform.php" class="nav-link px-2 link-dark">กรอกย้อนหลัง</a></li>
                         <li><a href="admin-booktype.php" class="nav-link px-2 link-dark">ประเภทหนังสือ</a></li>
-                        <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        <div class="C_nav3">
+                            <li><a href="admin-users.php" class="nav-link px-2 link-dark">จัดการสมาชิก</a></li>
+                        </div>
                     </ul>
                 </div>
             </header>
         </div>
 
         <!-- เนื้อหา -->
-        <div class="container col-lg-8 mb-3 bg-light p-3 pt-4 pb-4">
+        <div class="container col-lg-9 mb-3 bg-light p-3 pt-4 pb-4">
 
             <!-- การ์ด -->
             <div class="card ">
@@ -139,21 +142,25 @@ $year = (date("Y") + 543);
                             while ($rowtypeuse = $reqltype->fetch_assoc()) {
                                 array_push($listusetype, $rowtypeuse['TypeUseID']);
                             }
-                            
+
 
                             ?>
+                            <div class="container">
 
-                            <h5 class="mb-1">ข้อมูล </h5>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" name="Name" id="firstName" value="<?php echo $fullname; ?>">
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
+                            </div>
+                            <div class="container">
+
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">ชื่อ</label>
+                                    <input type="text" class="form-control" name="Name" id="firstName" value="<?php echo $fullname; ?>">
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Last name</label>
+                                <label for="lastName" class="form-label">นามสกุล</label>
                                 <input type="text" class="form-control" name="Surname" id="lastName" value="<?php echo $lastname; ?>">
                                 <div class="invalid-feedback">
                                     Valid last name is required.
@@ -162,30 +169,24 @@ $year = (date("Y") + 543);
 
 
                             <div class="col-12">
-                                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                                <label for="email" class="form-label">Email </label>
                                 <input type="email" class="form-control" name="Email" id="email" value="<?php echo $email; ?>" readonly>
                                 <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
+                                    Please enter a valid email address.
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="address" class="form-label">Phone</label>
+                                <label for="address" class="form-label">เบอร์โทรศัพท์</label>
                                 <input type="text" class="form-control" name="Phone" id="address" value="<?php echo $phone; ?>" value="<?php echo $phone; ?>">
                                 <div class="invalid-feedback">
-                                    Please enter your shipping address.
+                                    Please enter your phone number.
                                 </div>
                             </div>
-
-
-
 
                         </div>
 
                         <hr class="my-4">
-
-
-
 
                         <h5 class="mb-3">สถานะ </h5>
 
@@ -207,8 +208,6 @@ $year = (date("Y") + 543);
                             </label><br>
                         <?php } ?>
 
-
-
                         <hr class="my-4">
 
                         <h5 class="mb-3">สิทธ์ประเภท</h5>
@@ -217,70 +216,63 @@ $year = (date("Y") + 543);
                         $reql = $db->query($selectuser);
                         $rowuser = $reql->fetch_assoc();
                         $rowstatus = $rowuser['Status'];
-                        
-                        if($rowstatus == 'admin')
-                        {
+
+                        if ($rowstatus == 'admin') {
                             echo '<div class="form-check" id="form-check" style="display:none">';
-                  
-                        }else{
+                        } else {
                             echo '<div class="form-check" id="form-check">';
                         }
                         ?>
-                            <?php
-                            $namearr = array('');
-                            $typearr = array('');
-                            $selectuser = "select * from type where Status= 1";
-                            $reql = $db->query($selectuser);
+                        <?php
+                        $namearr = array('');
+                        $typearr = array('');
+                        $selectuser = "select * from type where Status= 1";
+                        $reql = $db->query($selectuser);
 
-                            while ($row = mysqli_fetch_array($reql)) {
-                                array_push($namearr, $row['Name']);
-                                array_push($typearr, $row['TypeID']);
-                            }
-                            $nameadd = count($namearr);
-                            $checkbook = 1;
-                            $start = 1;
-                            while ($start < $nameadd) {
-                                if (in_array($typearr[$start], $listusetype)) { ?>
-                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start];?>" checked="checked">
-                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                <?php echo $namearr[$start]."<br>   ";
-                                } else {
-                                ?>
-                                    <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start];?>">
-                                    <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                            <?php echo $namearr[$start]."<br>   ";
-                                }
-                                $start += 1;
-                            }
+                        while ($row = mysqli_fetch_array($reql)) {
+                            array_push($namearr, $row['Name']);
+                            array_push($typearr, $row['TypeID']);
+                        }
+                        $nameadd = count($namearr);
+                        $checkbook = 1;
+                        $start = 1;
+                        while ($start < $nameadd) {
+                            if (in_array($typearr[$start], $listusetype)) { ?>
+                                <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start]; ?>" checked="checked">
+                                <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                            <?php echo $namearr[$start] . "<br>   ";
+                            } else {
                             ?>
-                        </div>
-
-
-
-
-                        <hr class="my-4">
-
-
-
-                        <div class="row gy-3 mt-3 mb-3">
-                            <div class="d-flex col-12 justify-content-center">
-
-                                <button class="btn btn-success me-2" type="submit">ตกลง</button>
-                                <a href="admin-users.php" class="btn btn-danger ms-2">ยกเลิก</a>
-
-                            </div>
-                        </div>
-
-
-
-                    </form>
-
-
+                                <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start]; ?>">
+                                <label class="form-check-label ps-1" for="flexCheckDefault"></label>
+                        <?php echo $namearr[$start] . "<br>   ";
+                            }
+                            $start += 1;
+                        }
+                        ?>
                 </div>
-                <div class="card-footer text-muted">
 
+                <hr class="my-4">
+
+                <div class="row gy-3 mb-3">
+                    <div class="d-flex col-12 justify-content-center">
+
+                        <button class="btn btn-success me-3" type="submit">ตกลง</button>
+                        <a href="admin-users.php" class="btn btn-danger ms-3">ยกเลิก</a>
+
+                    </div>
                 </div>
+
+                </form>
+
+
             </div>
+
+            <div class="card-footer text-muted">
+
+            </div>
+
+        </div>
 
 
 

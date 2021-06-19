@@ -1,6 +1,7 @@
 <?php
 session_start();
 require("dbConn.php");
+
 if($_SESSION["USE_userid"]=="" || $_SESSION["USE_name"]=="" || $_SESSION["USE_email"]==""){
   header("location: login.php");  
 }else{

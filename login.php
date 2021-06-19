@@ -6,41 +6,36 @@ date_default_timezone_set("Asia/Bangkok");
 $selectnow = "select yearnow from now where now_id = '1'";
 $reql = $db->query($selectnow);
 $rowyear = $reql->fetch_assoc();
-$date_y=(date("Y")+543);
+$date_y = (date("Y") + 543);
 
-if(!isset($rowyear['yearnow'])){ 
+if (!isset($rowyear['yearnow'])) {
     #$insert = mysqli_query($db,"INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('1','2563')"); # test line
-    $insert = mysqli_query($db,"INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('1','$date_y')"); # work line
+    $insert = mysqli_query($db, "INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('1','$date_y')"); # work line
 }
 
 $selectnow = "select yearnow from now where now_id = '1'";
 $reql = $db->query($selectnow);
 $rowyear = $reql->fetch_assoc();
-$date_y=(date("Y")+543);
+$date_y = (date("Y") + 543);
 
 #chack old year  ?
-if($rowyear['yearnow'] != $date_y){
+if ($rowyear['yearnow'] != $date_y) {
     $selecttype = "select * from type";
-    if($reql = $db->query($selecttype))
-    {
-        $round = $reql->num_rows+1;
+    if ($reql = $db->query($selecttype)) {
+        $round = $reql->num_rows + 1;
         $updatedoc = "update now set yearnow = '$date_y' where now_id = '1'";
         $reql = $db->query($updatedoc);
         $i = 1;
-        while($i<$round)
-        {
+        while ($i < $round) {
             $updatetype = "update type set current_number = '0',current_year = '$date_y' where TypeID = '$i'";
-            if($reql2 = $db->query($updatetype))
-            {
+            if ($reql2 = $db->query($updatetype)) {
                 #echo "update type new year";
             }
-            $i += 1;    
-        }   
-    }
-    else{
+            $i += 1;
+        }
+    } else {
         print_r('book emtry');
     }
-    
 }
 unset($namearr);
 unset($numberarr);
@@ -102,16 +97,11 @@ if (!isset($_SESSION['access_token'])) {
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            /* height: 768px; */
+
             background: linear-gradient(to right,
                     #164A41, #4D774E, #9DC88D);
             font-family: 'Sarabun', sans-serif;
         }
-
-        /* body {
-            background-color: #08e1ae;
-            background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
-        } */
     </style>
 </head>
 
@@ -141,7 +131,7 @@ if (!isset($_SESSION['access_token'])) {
                         <p class="h6 text-muted mb-4 pt-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.ku.th เท่านั้น</p>
 
                         <?php
-                        
+
                         if ($login_button == '') {
                             header('location:ckuser.php');
                         } else {
@@ -161,7 +151,6 @@ if (!isset($_SESSION['access_token'])) {
     <!-- end Container    -->
 
     <p class="mt-5 mb-3">&copy; 2021–20XX</p>
-
 
     <script src="/myqnumber/lib/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
 

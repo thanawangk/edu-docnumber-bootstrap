@@ -2,10 +2,10 @@
 require("dbConn.php");
 session_start();
 
-// if (!$_SESSION['login']) {
-//     header("location: /myqnumber/login.php");
-//     exit;
-// }
+if (!$_SESSION['login']) {
+    header("location: /myqnumber/login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +23,14 @@ session_start();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
+    <link rel="shortcut icon" type="image/x-icon" href="img/ku-logo1.png" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 
     <style>
         body {
-
             background: linear-gradient(to right,
                     #12343b, #2d545e, #9DC88D);
             font-family: 'Sarabun', sans-serif;
@@ -47,8 +48,7 @@ session_start();
             <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
 
                 <a class="navbar-brand" href="#">
-                    <img src="img/ku-sublogo.png" class="img-responsive" alt="" width="32" height="32">
-                    <span class="text-success">KU SRC</span>
+                    <span class="text-success fw-bold">KU </span><span class="fw-bold" style="color:OliveDrab;">SRC</span>
                 </a>
 
                 <div class="d-flex align-items-center justify-content-end">
@@ -83,14 +83,14 @@ session_start();
         </header>
 
         <!-- ล่างหัวบน -->
-        <div class="container col-lg-8 p-3 border border-white border-3 "  >
+        <div class="container col-lg-9 p-3">
             <div class="ku-header p-1 pb-md-4 mx-auto text-center">
-                    <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
+                <div class="display-5 fw-normal text-white">ระบบออกเลขหนังสือราชการ</div>
             </div>
         </div>
 
         <!-- แถบเมนู -->
-        <div class="container col-lg-8 alert-secondary">
+        <div class="container col-lg-9 alert-secondary">
             <header class="p-3 mb-1 mt-1 border-bottom alert-secondary">
                 <div class="container">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -108,7 +108,7 @@ session_start();
         </div>
 
         <!-- เนื้อหา -->
-        <div class="container col-lg-8 mb-3 bg-light p-3 pt-4 pb-4">
+        <div class="container col-lg-9 mb-3 bg-light p-3 pt-4 pb-4">
 
             <!-- ตาราง -->
             <div class="col ">
@@ -118,7 +118,6 @@ session_start();
                             <tr>
                                 <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-
                             </tr>
                         </thead>
 
@@ -142,13 +141,11 @@ session_start();
                             <tr>
                                 <th>เลขประเภท</th>
                                 <th>ชื่อ</th>
-
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
-
 
 
         </div>
@@ -157,11 +154,6 @@ session_start();
 
         <!-- จบ Section -->
     </section>
-
-
-
-
-
 
 
 
