@@ -228,7 +228,6 @@ $year = (date("Y") + 543);
                         ?>
                             <?php
                             $namearr = array('');
-                            $yeararr = array('');
                             $typearr = array('');
                             $selectuser = "select * from type where Status= 1";
                             $reql = $db->query($selectuser);
@@ -236,7 +235,6 @@ $year = (date("Y") + 543);
                             while ($row = mysqli_fetch_array($reql)) {
                                 array_push($namearr, $row['Name']);
                                 array_push($typearr, $row['TypeID']);
-                                array_push($yeararr, $row['current_year']);
                             }
                             $nameadd = count($namearr);
                             $checkbook = 1;
@@ -245,12 +243,12 @@ $year = (date("Y") + 543);
                                 if (in_array($typearr[$start], $listusetype)) { ?>
                                     <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start];?>" checked="checked">
                                     <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                                <?php echo $namearr[$start]." ".$yeararr[$start]."<br>   ";
+                                <?php echo $namearr[$start]."<br>   ";
                                 } else {
                                 ?>
                                     <input class="form-check-input" type="checkbox" id="chk<?php echo $typearr[$start]; ?>" name="chk<?php echo $typearr[$start]; ?>" value="<?php echo $typearr[$start];?>">
                                     <label class="form-check-label ps-1" for="flexCheckDefault"></label>
-                            <?php echo $namearr[$start]." ".$yeararr[$start]."<br>   ";
+                            <?php echo $namearr[$start]."<br>   ";
                                 }
                                 $start += 1;
                             }

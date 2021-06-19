@@ -58,6 +58,7 @@ if(isset($_POST['submit']))
         }
     }
     $countloop = 1;
+    print_r($newword);
     while($countloop < $cnew)
     {
         $insert = mysqli_query($db,"INSERT INTO `permission`(`UserID`,`TypeUseID`) VALUES ('$useradd','$newword[$countloop]')");
