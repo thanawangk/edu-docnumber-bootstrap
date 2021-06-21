@@ -219,37 +219,52 @@ if (!$_SESSION['login']) {
                                         </td>
 
                                         <td>
-                                            <?php echo "<p class='text-success'>ใช้งาน</p>"; ?>
+                                            <?php if ($rowdoc["Status"] == 1) {
+                                                echo "<p class='text-success fw-bolder'>ใช้งาน</p>";
+                                            } elseif ($rowdoc["Status"] == 3) {
+                                                echo "<p class='text-muted fw-bolder'>จอง</p>";
+                                            } elseif ($rowdoc["Status"] == 4) {
+                                                echo "<p class='text-primary fw-bolder'>กรอกย้อนหลัง</p>";
+                                            }
+                                            ?>
+
                                         </td>
 
                                         <!-- ปุ่ม -->
                                         <td>
-                                            <div class="btn-group" role="group" aria-label="Second group">
-                                                <!-- ปุ่ม view -->
-                                                <a href="#" title='ดูรายละเอียด' class="btn btn-info waves-effect view-detail" data-fname="<?php echo $filename; ?>" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
-                                                </a>
-                                                <!-- ปุ่ม edit,cancel -->
-                                                <?php
-                                                if ($filename == null) {
+                                            <?php if ($rowdoc["Status"] == 3) {
+                                                echo "บ่มี";
+                                            } else {
+                                            ?>
+                                                <div class="btn-group" role="group" aria-label="Second group">
 
-                                                    echo "<a title='ไม่มีไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success disabled ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
-                                                } else {
-                                                    echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
-                                                }
+                                                    <!-- ปุ่ม view -->
+                                                    <a href="#" title='ดูรายละเอียด' class="btn btn-info waves-effect view-detail" data-fname="<?php echo $filename; ?>" data-id="<?php echo $rowdoc["Date"]; ?>" data-num="<?php echo 'อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]; ?>" data-sentname="<?php echo $rowdoc["Sent_Name"]; ?>" data-resvname="<?php echo $rowdoc["Receive_Name"]; ?>" data-text="<?php echo $rowdoc["Text"]; ?>" data-status="<?php echo $rowdoc["Status"]; ?>"><i class="fas fa-search"></i>
+                                                    </a>
 
-                                                echo "<a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid={$rowdoc["DocumentID"]}'><i class=\"far fa-edit\"></i></a></div>";
+                                                    <!-- ปุ่ม file -->
+                                                    <?php
+                                                    if ($filename == null) {
 
-                                                echo "<a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')\"><i class=\"fas fa-times\"></i></a>";
+                                                        echo "<a title='ไม่มีไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success disabled ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
+                                                    } else {
+                                                        echo "<a title='แสดงไฟล์ PDF' href='uploads/readpdf.php?filename={$filename}' class='btn btn-success ps-3 pe-3' ms-2 ><i class='fas fa-file-pdf'></i></a>";
+                                                    }
+                                                    ?>
+
+                                                    <!-- ปุ่ม edit,cancel -->
+                                                    <a title='แก้ไขเอกสาร' class='btn btn-secondary waves-effect edit-doc' href='admin-editdoc.php?docid=<?php echo $rowdoc["DocumentID"]; ?>'><i class="far fa-edit"></i></a>
+                                                </div>
+
+                                                <a title='ยกเลิกเอกสาร' class='btn btn-danger waves-effect ms-1 ps-3 pe-3 cancel-doc ' href='admin-doc-cancel.php?docid=<?php echo $rowdoc["DocumentID"]; ?>' onclick="return confirm('คุณต้องการยกเลิกเอกสารนี้ใช่หรือไม่?')"><i class="fas fa-times"></i></a>
 
 
-
-
-                                                ?>
 
                                         </td>
                                     </tr>
-                            <?php }
-                            } ?>
+                        <?php }
+                                        }
+                                    } ?>
                         </tbody>
 
                         <tfoot>
@@ -317,7 +332,7 @@ if (!$_SESSION['login']) {
                     <br>
 
                 </div>
-                <div class="modal-footer" >
+                <div class="modal-footer">
 
                 </div>
             </div>
