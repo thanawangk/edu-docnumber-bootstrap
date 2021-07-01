@@ -221,9 +221,9 @@ if (!$_SESSION['login']) {
                                         <td>
                                             <?php if ($rowdoc["Status"] == 1) {
                                                 echo "<p class='text-success fw-bolder'>ใช้งาน</p>";
-                                            } elseif ($rowdoc["Status"] == 3) {
+                                            } elseif ($rowdoc["Status"] == 2) {
                                                 echo "<p class='text-muted fw-bolder'>จอง</p>";
-                                            } elseif ($rowdoc["Status"] == 4) {
+                                            } elseif ($rowdoc["Status"] == 3) {
                                                 echo "<p class='text-primary fw-bolder'>กรอกย้อนหลัง</p>";
                                             }
                                             ?>
@@ -232,8 +232,8 @@ if (!$_SESSION['login']) {
 
                                         <!-- ปุ่ม -->
                                         <td>
-                                            <?php if ($rowdoc["Status"] == 3) {
-                                                echo "บ่มี";
+                                            <?php if ($rowdoc["Status"] == 2) {
+                                                echo " ";
                                             } else {
                                             ?>
                                                 <div class="btn-group" role="group" aria-label="Second group">
