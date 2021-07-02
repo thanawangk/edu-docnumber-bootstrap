@@ -182,8 +182,7 @@ if (!$_SESSION['login']) {
                                                 <a title='ใช้งานเอกสาร' class='btn btn-outline-success waves-effect activate-doc ' href='user-doc-activate.php?docid={$rowdoc["DocumentID"]}' onclick=\"return confirm('คุณต้องการใช้งานเอกสารใช่หรือไม่?')\"><i class='fas fa-check'></i></a>
                                             </td>
                                         </tr>";
-                                } elseif ($rowdoc["Status"] == 2) {
-                                } else {
+                                    } elseif ($rowdoc["Status"] == 1) {
                             ?>
                                     <tr>
                                         <td>
@@ -221,12 +220,7 @@ if (!$_SESSION['login']) {
                                         </td>
 
                                         <td>
-                                            <?php if ($rowdoc["Status"] == 1) {
-                                                echo "<p class='text-success fw-bolder'>ใช้งาน</p>";
-                                            } elseif ($rowdoc["Status"] == 3) {
-                                                echo "<p class='text-primary fw-bolder'>กรอกย้อนหลัง</p>";
-                                            }
-                                            ?>
+                                            <?php echo "<p class='text-success'>ใช้งาน</p>"; ?>
                                         </td>
 
                                         <!-- ปุ่ม -->
