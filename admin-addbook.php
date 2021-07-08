@@ -138,14 +138,14 @@ if (!$_SESSION['login']) {
                             <div class="container">
                                 <div class="col-lg-12">
                                     <label for="startnum">เลขเริ่มต้น :</label>
-                                    <input type="number" class="form-control mt-1" id="startnum" name="startnum" placeholder="0" required>
+                                    <input type="number" class="form-control mt-1" id="startnum" name="startnum" placeholder="0" value="0" required>
                                 </div>
                             </div>
                             <div class="container mb-3">
                                 <div class="col-lg-12">
                                     <label for="year">ปีปัจจุบัน :</label>
-                                    <input type="text" class="form-control mt-1" id="year" name="year" placeholder="โปรดใส่เลขปี พ.ศ. ปัจจุบัน" required>
-                                    <!-- <input type="text" class="form-control" id="year" name="year" placeholder="โปรดใส่ปี พ.ศ. ปัจจุบัน <?php echo $date_y ?>" value="" required> -->
+                                    <input type="text" class="form-control mt-1" id="year" name="year" placeholder="โปรดใส่เลขปี พ.ศ. ปัจจุบัน" value="<?php echo $date_y ?>" required>
+                                    <!-- <input type="text" class="form-control" id="year" name="year" placeholder="โปรดใส่เลขปี พ.ศ. ปัจจุบัน <?php echo $date_y ?>" value="" required> -->
                                 </div>
                             </div>
                         </div>
