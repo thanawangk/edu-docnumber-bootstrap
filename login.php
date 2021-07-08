@@ -7,16 +7,101 @@ $selectnow = "select yearnow from now where now_id = '1'";
 $reql = $db->query($selectnow);
 $rowyear = $reql->fetch_assoc();
 $date_y = (date("Y") + 543);
+$date_d = date("d-m");
 
 if (!isset($rowyear['yearnow'])) {
-    #$insert = mysqli_query($db,"INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('1','2563')"); # test line
     $insert = mysqli_query($db, "INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('1','$date_y')"); # work line
+    #$insert = mysqli_query($db, "INSERT INTO `now`(`now_id`,`yearnow`) VALUES ('2','$date_d')");
 }
+
+// type
+$selecttype = "select TypeID from type where status=1 ";
+$typemax = $db->query($selecttype);
+
+
+while ($typem = $typemax ->fetch_assoc() ){
+
+
+    $TypeRT = $typem["TypeID"];
+
+    
+    
+    
+}
+
+// echo "$TypeRT*int(3)  <br>";
+
+// $intTypeRT = (int)$TypeRT*3;
+$intTypeRT = 1;
+// echo "$intTypeRT TRT <br>";
+
+
+// type
+
+
+
+$selectdoc = "select Date from document where status=1 ";
+$datecheck = $db->query($selectdoc);
+
+
+while ($checkD = $datecheck->fetch_assoc() ){
+
+
+    $dateRT = $checkD["Date"];
+
+    
+    
+    
+}
+// $date_c = date("m-d");
+// $date_d = date("d");
+// $date_check = $date_y."-".$date_c;
+// // echo "$date_d <br>";
+// // echo substr("$date_d",0);
+// echo  "<br>";
+// echo "$dateRT <br>";
+// echo "$date_check<br>";
+// $zero = 0;
+// $conn = new mysqli("localhost","root","","qnumber");
+
+
+// if($date_check != $dateRT){
+//     echo "insert <br>";
+//     while($zero<$intTypeRT){
+//         $zero+=1;
+//         // insert status 4
+//         //  $insertreform = "INSERT INTO `document` (`DocumentID`, `TypeID`, `UserID`, `Date`, `resultNumber`, `Sent_Name`, `Receive_Name`, `Text`, `Phone`, `Filee`, `Status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+//         $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+//         // $sql = "INSERT INTO `document` ( `Status`) VALUES (2)";
+
+//         $result = $conn->query($sql);
+//     }
+// }
+// else{
+//     echo "no insert";
+// }
+
+
+
+
+
+
 
 $selectnow = "select yearnow from now where now_id = '1'";
 $reql = $db->query($selectnow);
 $rowyear = $reql->fetch_assoc();
 $date_y = (date("Y") + 543);
+
+
+
+
 
 #chack old year  ?
 if ($rowyear['yearnow'] != $date_y) {
@@ -128,7 +213,7 @@ if (!isset($_SESSION['access_token'])) {
 
 
                         <div class="fs-2 text-gray-900 mb-4 ">ระบบออกเลขหนังสือราชการ</div>
-                        <p class="h6 text-muted mb-4 pt-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.ku.th เท่านั้น</p>
+                        <p class="h6 text-muted mb-4 pt-4">โปรดเข้าสู่ระบบด้วยแอคเคาท์ @eng.src.ku.th เท่านั้น</p>
 
                         <?php
 

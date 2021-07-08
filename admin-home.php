@@ -155,7 +155,7 @@ if (!$_SESSION['login']) {
                                     $row2 = mysqli_fetch_array($reql2);
                                     $typenum = $row2['TypeNumber'];
                                     $textlimit = iconv_substr($rowdoc["Text"], 0, 10);
-                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"] . '</del></td>';
+                                    echo '  <td><p class=\'text-danger\'><del>อว.6503' . $typenum . '/' . $rowdoc["resultNumber"]. '</del></td>';
 
                                     echo "  <td>
                                                 <p class='text-danger'><del>{$rowdoc["Sent_Name"]}</del>

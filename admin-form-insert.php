@@ -30,11 +30,13 @@ if(isset($_POST['submit']))
 
     $filee = $namepdf;
     $resultNumber = 1;
+    
 
     $selecttype = "select current_number from type where TypeID = '$dropdown'";
     $reql = $db->query($selecttype);
     $rowtype = $reql->fetch_assoc();
-    $resultNumber = $rowtype['current_number'] + 1;
+    $resultNumber = $rowtype['current_number'] +1;
+    // $resultNumber = $rowtype['current_number'].".".$num;
     $checky = date('Y')+543; 
 
 

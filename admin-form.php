@@ -123,7 +123,7 @@ if (!$_SESSION['login']) {
             <!-- การ์ด -->
             <div class="card ">
                 <div class="card-header">
-                    <h3>กรอกขอเลขเอกสาร</h3>
+                    <h3>กรอกขอเลข</h3>
                 </div>
                 <div class="card-body ps-4 pe-4">
 
@@ -131,17 +131,16 @@ if (!$_SESSION['login']) {
                     <?php
                     $user_id = $_SESSION['AD_userid'];
                     $date_y = (date("Y") + 543);
-                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year,type.Status FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
+                    /*SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission 
+                        INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = 'ปีปัจจุบัน'*/
+                    $selecttypeuse = "SELECT permission.UserID, permission.TypeUseID,type.current_year FROM permission INNER JOIN type ON permission.TypeUseID = type.TypeID WHERE type.current_year = '$date_y' AND permission.UserID = '$user_id'";
                     $reqltype = $db->query($selecttypeuse);
 
                     $listusetype = array('');
                     while ($rowtypeuse = $reqltype->fetch_assoc()) {
-                        if ($rowtypeuse['Status'] == '1') {
-                            array_push($listusetype, $rowtypeuse['TypeUseID']);
-                        }
+                        array_push($listusetype, $rowtypeuse['TypeUseID']);
                     }
                     $countlist = count($listusetype);
-
                     ?>
 
                     <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
@@ -150,7 +149,6 @@ if (!$_SESSION['login']) {
                             <div class="container">
 
                             </div>
-
 
                             <div class="col-md-4">
                                 <label for="state" class="form-label">ประเภทหนังสือ</label>
@@ -163,12 +161,9 @@ if (!$_SESSION['login']) {
                                         $reql = $db->query($selecttype);
                                         $rowtype = $reql->fetch_assoc();
                                         $namebook = $rowtype['Name'];
-                                        $statusbook = $rowtype['Status'];
-                                        if ($statusbook = '1') {
                                     ?>
-                                            <option name="drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
+                                        <option name="drop<?php echo $loop ?>" value="<?php echo $listusetype[$loop] ?>"><?php print_r($namebook); ?></option>
                                     <?php
-                                        }
                                         $loop += 1;
                                     } ?>
                                 </select>
@@ -176,7 +171,6 @@ if (!$_SESSION['login']) {
                                     Please provide a ประเภทหนังสือ
                                 </div>
                             </div>
-
 
                             <div class="col-lg-4 col-md-4 ">
                                 <label for="zip" class="form-label">ลงวันที่</label>
@@ -199,7 +193,7 @@ if (!$_SESSION['login']) {
                                     <input type="text" class="form-control" name="send" id="firstName" placeholder="ชื่อ-นามสกุล" required>
                                     <span class="input-group-text">ถึง</span>
                                     <div class="invalid-feedback">
-                                        ชื่อผู้ส่ is required.
+                                        ชื่อผู้ส่ง is required.
                                     </div>
                                 </div>
                             </div>
@@ -222,9 +216,7 @@ if (!$_SESSION['login']) {
                                 </div>
                             </div>
 
-
                         </div>
-
 
                         <div class="col-md-6 pt-3">
 
@@ -239,18 +231,19 @@ if (!$_SESSION['login']) {
 
                         <div class="row gy-3 mb-3">
                             <div class="d-flex col-12 justify-content-center">
+
                                 <button class="btn btn-success me-3" name="submit" type="submit">ตกลง</button>
-                                <a href="admin-form.php" class="btn btn-danger ms-3">ยกเลิก</a>
+                                <a href="admin-reform.php" class="btn btn-danger ms-3">ยกเลิก</a>
+
                             </div>
                         </div>
 
                     </form>
-                </div>
 
+                </div>
                 <div class="card-footer text-muted">
 
                 </div>
-
             </div>
         </div>
 

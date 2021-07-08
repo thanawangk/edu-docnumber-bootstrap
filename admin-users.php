@@ -112,11 +112,17 @@ if (!$_SESSION['login']) {
 
 
         <div class="container col-lg-9 mb-3 bg-light p-3">
-
-            <div class="mb-3 d-flex justify-content-end">
-                <a class="add_booktype_user p-2" href="admin-adduser.php" role="button">เพิ่มสมาชิก</a>
-            </div>
-
+            <form class="needs-validation" action="admin-user-upload.php" method="POST" enctype="multipart/form-data">                                  
+                <div class="mb-3 d-flex justify-content-end">
+                    <button class="btn btn-warning me-3" name="submitmit" type="submit">Dowload Excel Format</button>&nbsp
+                    <button class="btn btn-success me-3" name="submit" type="submit">เพิ่มสมาชิกด้วยไฟล์(.xls)</button>&nbsp
+                    <a class="add_booktype_user p-2" href="admin-adduser.php" role="button">เพิ่มสมาชิก</a>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="fileUpload" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+            </form>
             <!-- ตาราง -->
             <div class="col">
                 <div class="table-responsive">

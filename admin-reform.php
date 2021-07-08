@@ -145,7 +145,7 @@ if (!$_SESSION['login']) {
                     $countlist = count($listusetype);
                     ?>
 
-                    <form class="needs-validation" action="admin-form-insert.php" method="POST" enctype="multipart/form-data">
+                    <form class="needs-validation" action="admin-reform-insert.php" method="POST" enctype="multipart/form-data">
                         <div class="row g-3">
 
                             <div class="container">
